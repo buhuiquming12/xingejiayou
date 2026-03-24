@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鑫哥专升本必胜 · 祝福主控台</title>
+    <style>
+      :root {
+        --bg: #040510;
+        --panel: rgba(8, 12, 32, 0.72);
+        --panel-strong: rgba(10, 16, 40, 0.88);
+        --cyan: #48f5ff;
+        --blue: #4b7bff;
+        --gold: #ffd86b;
+        --pink: #ff5fd2;
+        --white: #f6fbff;
+        --text: rgba(235, 245, 255, 0.88);
+        --border: rgba(99, 229, 255, 0.22);
+        --shadow: 0 0 25px rgba(72, 245, 255, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: radial-gradient(
+            circle at top,
+            rgba(75, 123, 255, 0.22),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 95, 210, 0.16),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(72, 245, 255, 0.14),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #03040a 0%, #060814 48%, #03030a 100%);
+        color: var(--white);
+        font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial,
+          sans-serif;
+        position: relative;
+      }
+
+      #starfield {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 36px 0 42px;
+      }
+
+      .ambient-glow,
+      .ambient-glow::before,
+      .ambient-glow::after {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(12px);
+        pointer-events: none;
+      }
+
+      .ambient-glow {
+        inset: 0;
+        z-index: 0;
+      }
+
+      .ambient-glow::before {
+        content: "";
+        width: 260px;
+        height: 260px;
+        top: 60px;
+        left: -70px;
+        background: radial-gradient(
+          circle,
+          rgba(72, 245, 255, 0.22),
+          transparent 68%
+        );
+      }
+
+      .ambient-glow::after {
+        content: "";
+        width: 300px;
+        height: 300px;
+        right: -100px;
+        top: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 95, 210, 0.18),
+          transparent 70%
+        );
+      }
+
+      .hero-panel,
+      .section-panel {
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(8, 14, 34, 0.82),
+          rgba(6, 10, 28, 0.78)
+        );
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow), inset 0 0 20px rgba(72, 245, 255, 0.04);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
+      }
+
+      .hero-panel {
+        border-radius: 28px;
+        padding: 42px;
+      }
+
+      .hero-panel::before,
+      .section-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(72, 245, 255, 0.08),
+          transparent 32%,
+          rgba(255, 216, 107, 0.06) 72%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+
+      .hero-topline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: rgba(72, 245, 255, 0.08);
+        border: 1px solid rgba(72, 245, 255, 0.22);
+        color: var(--cyan);
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+        box-shadow: 0 0 18px rgba(72, 245, 255, 0.12);
+      }
+
+      .hero-layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+        gap: 28px;
+        align-items: center;
+      }
+
+      .hero-title {
+        margin: 0;
+        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        line-height: 1.06;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(72, 245, 255, 0.9),
+          0 0 24px rgba(72, 245, 255, 0.8), 0 0 48px rgba(75, 123, 255, 0.55),
+          0 0 80px rgba(75, 123, 255, 0.3);
+        animation: neonPulse 2.2s ease-in-out infinite alternate;
+      }
+
+      .hero-title .accent {
+        color: var(--gold);
+        text-shadow: 0 0 12px rgba(255, 216, 107, 0.9),
+          0 0 28px rgba(255, 216, 107, 0.52), 0 0 48px rgba(255, 95, 210, 0.2);
+      }
+
+      .hero-subtitle {
+        margin: 18px 0 14px;
+        font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+        color: var(--gold);
+        letter-spacing: 5px;
+        font-weight: 700;
+        text-shadow: 0 0 14px rgba(255, 216, 107, 0.38);
+      }
+
+      .hero-message {
+        margin: 0;
+        max-width: 720px;
+        color: var(--text);
+        font-size: 1.08rem;
+        line-height: 1.95;
+      }
+
+      .quote-switcher {
+        margin-top: 18px;
+        min-height: 30px;
+        color: var(--cyan);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 0 0 12px rgba(72, 245, 255, 0.26);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+
+      .quote-switcher.fade {
+        opacity: 0.2;
+        transform: translateY(6px);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .btn,
+      .ghost-btn,
+      .portal-card {
+        transition: transform 0.28s ease, box-shadow 0.28s ease,
+          border-color 0.28s ease, background 0.28s ease, color 0.28s ease;
+      }
+
+      .btn,
+      .ghost-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 56px;
+        padding: 14px 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .btn {
+        border: 1px solid rgba(72, 245, 255, 0.42);
+        background: linear-gradient(
+          135deg,
+          rgba(72, 245, 255, 0.16),
+          rgba(75, 123, 255, 0.16)
+        );
+        color: var(--white);
+        box-shadow: 0 0 18px rgba(72, 245, 255, 0.2);
+      }
+
+      .btn:hover,
+      .ghost-btn:hover,
+      .portal-card:hover {
+        transform: translateY(-4px) scale(1.01);
+      }
+
+      .btn:hover {
+        box-shadow: 0 0 24px rgba(72, 245, 255, 0.3),
+          0 0 40px rgba(75, 123, 255, 0.16);
+        border-color: rgba(72, 245, 255, 0.75);
+      }
+
+      .ghost-btn {
+        border: 1px solid rgba(255, 216, 107, 0.35);
+        background: rgba(255, 216, 107, 0.08);
+        color: var(--gold);
+        box-shadow: 0 0 16px rgba(255, 216, 107, 0.12);
+      }
+
+      .ghost-btn:hover {
+        box-shadow: 0 0 24px rgba(255, 216, 107, 0.18);
+        border-color: rgba(255, 216, 107, 0.62);
+      }
+
+      .status-line {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 18px;
+        padding: 10px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(235, 245, 255, 0.8);
+        font-size: 0.96rem;
+      }
+
+      .status-chip {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(72, 245, 255, 0.12);
+        color: var(--cyan);
+        font-weight: 700;
+        font-size: 0.86rem;
+      }
+
+      .hero-side {
+        position: relative;
+        min-height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .energy-core {
+        position: relative;
+        width: min(320px, 76vw);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+      }
+
+      .energy-core::before,
+      .energy-core::after,
+      .ring,
+      .ring::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        inset: 0;
+      }
+
+      .energy-core::before {
+        background: radial-gradient(
+          circle,
+          rgba(72, 245, 255, 0.3),
+          rgba(72, 245, 255, 0.05) 42%,
+          transparent 64%
+        );
+        filter: blur(10px);
+        animation: corePulse 2.8s ease-in-out infinite;
+      }
+
+      .energy-core::after {
+        inset: 18%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 216, 107, 0.9),
+          rgba(255, 95, 210, 0.28) 50%,
+          transparent 72%
+        );
+        box-shadow: 0 0 30px rgba(255, 216, 107, 0.35);
+      }
+
+      .ring {
+        border: 1px solid rgba(72, 245, 255, 0.26);
+        animation: spin 16s linear infinite;
+      }
+
+      .ring.ring-2 {
+        inset: 10%;
+        border-color: rgba(255, 216, 107, 0.26);
+        animation-direction: reverse;
+        animation-duration: 12s;
+      }
+
+      .ring.ring-3 {
+        inset: 21%;
+        border-color: rgba(255, 95, 210, 0.22);
+        animation-duration: 8s;
+      }
+
+      .ring::before {
+        inset: -2px;
+        border-top: 4px solid rgba(72, 245, 255, 0.85);
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid transparent;
+      }
+
+      .energy-label {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(7, 11, 28, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 20px rgba(72, 245, 255, 0.05);
+      }
+
+      .energy-label strong {
+        display: block;
+        font-size: 2.2rem;
+        color: var(--gold);
+        letter-spacing: 3px;
+        text-shadow: 0 0 16px rgba(255, 216, 107, 0.45);
+      }
+
+      .energy-label span {
+        display: block;
+        margin-top: 10px;
+        color: var(--text);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .blessing-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .blessing-card {
+        position: relative;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.02);
+      }
+
+      .blessing-card strong {
+        display: block;
+        color: var(--gold);
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+      }
+
+      .blessing-card span {
+        display: block;
+        color: rgba(235, 245, 255, 0.78);
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+
+      .section-panel {
+        margin-top: 24px;
+        border-radius: 24px;
+        padding: 34px;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+        color: var(--white);
+        text-shadow: 0 0 16px rgba(72, 245, 255, 0.2);
+      }
+
+      .section-title .mini-accent {
+        color: var(--cyan);
+      }
+
+      .section-desc {
+        margin: 0 0 22px;
+        color: rgba(235, 245, 255, 0.78);
+        line-height: 1.9;
+      }
+
+      .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .portal-card {
+        position: relative;
+        display: block;
+        min-height: 220px;
+        padding: 24px;
+        border-radius: 22px;
+        text-decoration: none;
+        color: var(--white);
+        background: linear-gradient(
+          180deg,
+          rgba(12, 18, 44, 0.82),
+          rgba(9, 14, 34, 0.9)
+        );
+        border: 1px solid rgba(72, 245, 255, 0.18);
+        box-shadow: inset 0 0 18px rgba(72, 245, 255, 0.04),
+          0 10px 32px rgba(0, 0, 0, 0.18);
+        overflow: hidden;
+      }
+
+      .portal-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -30% -40% auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(72, 245, 255, 0.18),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .portal-card:hover {
+        border-color: rgba(72, 245, 255, 0.58);
+        box-shadow: 0 0 26px rgba(72, 245, 255, 0.18),
+          0 18px 42px rgba(0, 0, 0, 0.26);
+      }
+
+      .portal-icon {
+        font-size: 2rem;
+        display: inline-flex;
+        width: 56px;
+        height: 56px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.04);
+        margin-bottom: 18px;
+      }
+
+      .portal-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+      }
+
+      .portal-card p {
+        margin: 0;
+        color: rgba(235, 245, 255, 0.75);
+        line-height: 1.8;
+        font-size: 0.98rem;
+      }
+
+      .portal-tag {
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .portal-card.battle .portal-tag {
+        color: #ff8aa5;
+      }
+      .portal-card.victory .portal-tag {
+        color: #ffd86b;
+      }
+      .portal-card.energy .portal-tag {
+        color: #75f8ff;
+      }
+
+      .footer-note {
+        margin-top: 20px;
+        padding: 20px 22px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(235, 245, 255, 0.78);
+        line-height: 1.9;
+      }
+
+      .footer-note strong {
+        color: var(--gold);
+      }
+
+      .shake {
+        animation: screenShake 0.55s ease-in-out;
+      }
+
+      .buffed .hero-panel {
+        box-shadow: 0 0 38px rgba(255, 216, 107, 0.2),
+          0 0 22px rgba(255, 95, 210, 0.12),
+          inset 0 0 28px rgba(255, 216, 107, 0.05);
+        border-color: rgba(255, 216, 107, 0.26);
+      }
+
+      .buffed .hero-title {
+        text-shadow: 0 0 10px rgba(255, 216, 107, 0.95),
+          0 0 24px rgba(255, 95, 210, 0.5), 0 0 54px rgba(255, 216, 107, 0.34);
+      }
+
+      .spark {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 5;
+        background: radial-gradient(
+          circle,
+          rgba(255, 216, 107, 0.95),
+          rgba(255, 95, 210, 0.38),
+          transparent 70%
+        );
+        box-shadow: 0 0 12px rgba(255, 216, 107, 0.7);
+        animation: sparkFly 900ms ease-out forwards;
+      }
+
+      @keyframes neonPulse {
+        0% {
+          text-shadow: 0 0 8px rgba(72, 245, 255, 0.88),
+            0 0 20px rgba(72, 245, 255, 0.75), 0 0 38px rgba(75, 123, 255, 0.38);
+        }
+        100% {
+          text-shadow: 0 0 14px rgba(72, 245, 255, 1),
+            0 0 30px rgba(72, 245, 255, 0.92), 0 0 60px rgba(75, 123, 255, 0.52),
+            0 0 86px rgba(75, 123, 255, 0.3);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes corePulse {
+        0%,
+        100% {
+          transform: scale(0.96);
+          opacity: 0.88;
+        }
+        50% {
+          transform: scale(1.04);
+          opacity: 1;
+        }
+      }
+
+      @keyframes screenShake {
+        0% {
+          transform: translate(0, 0);
+        }
+        20% {
+          transform: translate(-2px, 3px);
+        }
+        40% {
+          transform: translate(3px, -2px);
+        }
+        60% {
+          transform: translate(-3px, 1px);
+        }
+        80% {
+          transform: translate(2px, 2px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes sparkFly {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) scale(0.2);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-layout,
+        .portal-grid,
+        .blessing-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-panel,
+        .section-panel {
+          padding: 28px 22px;
+        }
+
+        .hero-side {
+          min-height: 280px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-shell {
+          width: min(100% - 20px, 1200px);
+          padding-top: 18px;
+        }
+
+        .hero-topline {
+          font-size: 0.85rem;
+        }
+
+        .hero-subtitle {
+          letter-spacing: 2px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+
+        .btn,
+        .ghost-btn {
+          width: 100%;
+        }
+
+        .portal-card {
+          min-height: 205px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="starfield"></canvas>
+
+    <main class="page-shell" id="page-shell">
+      <div class="ambient-glow"></div>
+
+      <section class="hero-panel" id="main-content">
+        <div class="hero-topline">
+          ⚡ 鑫哥专升本祝福主控台 · 首页总入口已启动
+        </div>
+
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1 class="hero-title">
+              鑫哥，<span class="accent">专升本必胜！</span>
+            </h1>
+            <div class="hero-subtitle" id="hero-subtitle">
+              逢考必过 · 一战上岸 · 金榜题名
+            </div>
+            <p class="hero-message">
+              这不是一张普通祝福卡，而是一座为你点亮的热血主场。愿你带着沉淀已久的实力、稳稳拿捏的节奏和所向披靡的气势，
+              在考场上落笔生风、答题如神、一路高光，最终成功上岸！
+            </p>
+            <div class="quote-switcher" id="quote-switcher">
+              「今日蓄力到顶，明日一笔封神。」
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn" id="buff-btn" onclick="addBuff()">
+                🔥 点击注入【逢考必过】Buff
+              </button>
+              <a class="ghost-btn" href="#portal-section"
+                >🚀 进入祝福分站导航</a
+              >
+            </div>
+
+            <div class="status-line" id="buff-status">
+              <span class="status-chip">当前状态</span>
+              <span
+                >主控台待命中：星空已就绪、祝福已满载、上岸气场持续拉满。</span
+              >
+            </div>
+          </div>
+
+          <div class="hero-side" aria-hidden="true">
+            <div class="energy-core">
+              <div class="ring ring-1"></div>
+              <div class="ring ring-2"></div>
+              <div class="ring ring-3"></div>
+              <div class="energy-label">
+                <strong>PASS</strong>
+                <span>愿你提笔有神，<br />合笔凯旋而归。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blessing-strip">
+          <div class="blessing-card">
+            <strong>稳住节奏</strong>
+            <span>知识点听你调度，考场发挥稳到发光。</span>
+          </div>
+          <div class="blessing-card">
+            <strong>状态拉满</strong>
+            <span>清醒、专注、果断，气势直接拉到巅峰档。</span>
+          </div>
+          <div class="blessing-card">
+            <strong>答案顺手</strong>
+            <span>会的全对，蒙的也准，每一题都朝着高分前进。</span>
+          </div>
+          <div class="blessing-card">
+            <strong>成功上岸</strong>
+            <span>金榜题名，未来开阔，下一站就是更高处的风景。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="portal-section">
+        <h2 class="section-title">
+          炫酷分站导航 <span class="mini-accent">/ 祝福能量矩阵</span>
+        </h2>
+        <p class="section-desc">
+          下面 3
+          个入口是后续祝福页面的主分站通道。首页已经提前为它们预留跳转：热血战斗、荣耀凯旋、能量冲刺，
+          每一站都对应一种上岸气势。点击即可前往对应页面文件名。
+        </p>
+
+        <div class="portal-grid">
+          <a class="portal-card battle" href="battle.html">
+            <div class="portal-icon">⚔️</div>
+            <h3>battle.html</h3>
+            <p>
+              进入“热血战斗场”分站，主打冲锋气势、破局节奏与考场爆发感，适合点燃鑫哥出征状态。
+            </p>
+            <span class="portal-tag">战力入口 · 一路横推</span>
+          </a>
+
+          <a class="portal-card victory" href="victory.html">
+            <div class="portal-icon">🏆</div>
+            <h3>victory.html</h3>
+            <p>
+              进入“荣耀凯旋站”分站，主打金榜题名、成功上岸、凯歌高奏，用仪式感迎接胜利时刻。
+            </p>
+            <span class="portal-tag">凯旋入口 · 金榜高亮</span>
+          </a>
+
+          <a class="portal-card energy" href="energy.html">
+            <div class="portal-icon">⚡</div>
+            <h3>energy.html</h3>
+            <p>
+              进入“能量冲刺舱”分站，主打专注、蓄力、爆发，在最后冲刺阶段持续给鑫哥加满状态。
+            </p>
+            <span class="portal-tag">冲刺入口 · Buff 续满</span>
+          </a>
+        </div>
+
+        <div class="footer-note">
+          <strong>主站寄语：</strong>
+          星光不问赶路人，时光不负有心人。愿鑫哥这一路所有的努力，都在考场上化成最稳定的发挥、最漂亮的分数和最响亮的捷报。
+          今日全力以赴，明日必定乘风上岸！
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const canvas = document.getElementById("starfield");
+      const ctx = canvas.getContext("2d");
+      const quoteSwitcher = document.getElementById("quote-switcher");
+      const heroSubtitle = document.getElementById("hero-subtitle");
+      const buffStatus = document.getElementById("buff-status");
+      const pageShell = document.getElementById("page-shell");
+      const buffBtn = document.getElementById("buff-btn");
+
+      let width = 0;
+      let height = 0;
+      let stars = [];
+
+      const quotes = [
+        "「今日蓄力到顶，明日一笔封神。」",
+        "「乾坤未定，你就是那匹最耀眼的黑马。」",
+        "「愿你落笔自信，收卷时已知胜局。」",
+        "「这一战，不是试试看，而是稳稳上岸。」",
+      ];
+
+      function initStarfield() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        stars = [];
+
+        const starCount = Math.max(160, Math.floor((width * height) / 9000));
+        for (let i = 0; i < starCount; i++) {
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.8 + 0.2,
+            speedY: Math.random() * 0.38 + 0.08,
+            speedX: (Math.random() - 0.5) * 0.15,
+            alpha: Math.random() * 0.6 + 0.2,
+          });
+        }
+      }
+
+      function drawStarfield() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < stars.length; i++) {
+          const star = stars[i];
+          ctx.beginPath();
+          ctx.fillStyle = "rgba(255,255,255," + star.alpha + ")";
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          star.y -= star.speedY;
+          star.x += star.speedX;
+
+          if (star.y < -4) {
+            star.y = height + 4;
+            star.x = Math.random() * width;
+          }
+
+          if (star.x < -4) {
+            star.x = width + 4;
+          } else if (star.x > width + 4) {
+            star.x = -4;
+          }
+        }
+
+        requestAnimationFrame(drawStarfield);
+      }
+
+      function rotateQuotes() {
+        let quoteIndex = 0;
+        setInterval(function () {
+          quoteSwitcher.classList.add("fade");
+
+          setTimeout(function () {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            quoteSwitcher.textContent = quotes[quoteIndex];
+            quoteSwitcher.classList.remove("fade");
+          }, 220);
+        }, 2600);
+      }
+
+      function emitSparks() {
+        const rect = buffBtn.getBoundingClientRect();
+        const originX = rect.left + rect.width / 2;
+        const originY = rect.top + rect.height / 2;
+
+        for (let i = 0; i < 14; i++) {
+          const spark = document.createElement("span");
+          spark.className = "spark";
+          spark.style.left = originX + "px";
+          spark.style.top = originY + "px";
+          spark.style.setProperty("--tx", Math.random() * 180 - 90 + "px");
+          spark.style.setProperty("--ty", Math.random() * -160 - 20 + "px");
+          document.body.appendChild(spark);
+
+          setTimeout(function () {
+            spark.remove();
+          }, 900);
+        }
+      }
+
+      function addBuff() {
+        pageShell.classList.add("shake");
+        document.body.classList.add("buffed");
+        emitSparks();
+
+        buffBtn.textContent = "Buff 已注满！鑫哥此战必上岸！";
+        heroSubtitle.textContent = "武运昌隆 · 下笔有神 · 所向披靡";
+        buffStatus.innerHTML =
+          '<span class="status-chip">Buff 已激活</span><span>逢考必过、思路清晰、手感火热、成功上岸四重祝福已全部上线。</span>';
+        quoteSwitcher.textContent =
+          "「此刻开始，鑫哥状态全开，考场就是你的高光舞台！」";
+
+        setTimeout(function () {
+          pageShell.classList.remove("shake");
+        }, 550);
+      }
+
+      window.addEventListener("resize", initStarfield);
+      initStarfield();
+      drawStarfield();
+      rotateQuotes();
+    </script>
+  </body>
+</html>

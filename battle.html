@@ -1,0 +1,808 @@
+﻿<!DOCTYPE html>
+<html lang='zh-CN'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>鑫哥专升本必胜 · 热血战斗场</title>
+    <style>
+      :root {
+        --bg: #06020d;
+        --panel: rgba(24, 8, 30, 0.76);
+        --panel-strong: rgba(32, 10, 38, 0.9);
+        --primary: #ff547d;
+        --secondary: #ff2bd6;
+        --accent: #a96fff;
+        --white: #fff5fb;
+        --text: rgba(255, 231, 244, 0.84);
+        --border: rgba(255, 84, 125, 0.26);
+        --shadow: 0 0 32px rgba(255, 43, 214, 0.2);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: 'Microsoft YaHei', 'PingFang SC', 'Segoe UI', sans-serif;
+        color: var(--white);
+        background:
+          radial-gradient(circle at top, rgba(255, 84, 125, 0.18), transparent 26%),
+          radial-gradient(circle at 82% 18%, rgba(255, 43, 214, 0.14), transparent 22%),
+          radial-gradient(circle at 18% 82%, rgba(169, 111, 255, 0.18), transparent 24%),
+          linear-gradient(180deg, #020106 0%, #09020f 48%, #020105 100%);
+        position: relative;
+      }
+
+      body::before,
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::before {
+        background:
+          linear-gradient(120deg, transparent 0 44%, rgba(255, 255, 255, 0.05) 50%, transparent 56%),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 84, 125, 0.06) 0 2px,
+            transparent 2px 80px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 84, 125, 0.05) 0 1px,
+            transparent 1px 64px
+          );
+        mix-blend-mode: screen;
+        opacity: 0.7;
+      }
+
+      body::after {
+        background: linear-gradient(180deg, transparent, rgba(255, 43, 214, 0.08), transparent);
+        transform: translateY(-100%);
+        animation: scanDrop 5.6s linear infinite;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+        width: min(1240px, calc(100% - 30px));
+        margin: 0 auto;
+        padding: 22px 0 34px;
+      }
+
+      .site-nav,
+      .hero-panel,
+      .section-panel,
+      .stat-card,
+      .signal-card,
+      .core-card {
+        background: linear-gradient(180deg, rgba(28, 10, 34, 0.84), rgba(12, 6, 24, 0.84));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow), inset 0 0 20px rgba(255, 84, 125, 0.05);
+        backdrop-filter: blur(12px);
+      }
+
+      .site-nav {
+        position: sticky;
+        top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+        justify-content: center;
+        z-index: 3;
+      }
+
+      .site-nav a {
+        text-decoration: none;
+        color: rgba(255, 236, 246, 0.86);
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.04);
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a.active {
+        transform: translateY(-2px);
+        border-color: rgba(255, 84, 125, 0.56);
+        box-shadow: 0 0 18px rgba(255, 84, 125, 0.18);
+      }
+
+      .site-nav a.active {
+        color: var(--white);
+        background: linear-gradient(135deg, rgba(255, 84, 125, 0.2), rgba(255, 43, 214, 0.18));
+      }
+
+      .hero-panel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        padding: 34px;
+      }
+
+      .hero-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(255, 84, 125, 0.12), transparent 34%, rgba(169, 111, 255, 0.1) 72%, transparent);
+        pointer-events: none;
+      }
+
+      .hero-layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.88fr);
+        gap: 28px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+        background: rgba(255, 84, 125, 0.1);
+        border: 1px solid rgba(255, 84, 125, 0.24);
+        color: #ff97bc;
+        letter-spacing: 1px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.9rem, 7vw, 5.4rem);
+        line-height: 1.04;
+        letter-spacing: 2px;
+        text-shadow: 0 0 12px rgba(255, 84, 125, 0.9), 0 0 30px rgba(255, 43, 214, 0.56), 0 0 68px rgba(169, 111, 255, 0.26);
+      }
+
+      h1 .accent {
+        color: #ffd0df;
+      }
+
+      .subtitle {
+        margin: 16px 0 12px;
+        font-size: clamp(1.16rem, 2.8vw, 1.84rem);
+        color: #ffc2d7;
+        letter-spacing: 4px;
+        font-weight: 700;
+      }
+
+      .hero-message,
+      .section-desc,
+      .signal-card p,
+      .section-panel li,
+      .footer-note {
+        color: var(--text);
+        line-height: 1.9;
+      }
+
+      .hero-message {
+        margin: 0;
+        font-size: 1.04rem;
+        max-width: 720px;
+      }
+
+      .battle-quote {
+        margin-top: 18px;
+        min-height: 28px;
+        color: #ff9fc4;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 0 0 14px rgba(255, 84, 125, 0.28);
+        transition: opacity 0.32s ease, transform 0.32s ease;
+      }
+
+      .battle-quote.fade {
+        opacity: 0.2;
+        transform: translateY(5px);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .btn,
+      .ghost-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        padding: 14px 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, rgba(255, 84, 125, 0.26), rgba(255, 43, 214, 0.24));
+        color: var(--white);
+        border: 1px solid rgba(255, 84, 125, 0.4);
+        box-shadow: 0 0 20px rgba(255, 84, 125, 0.18);
+      }
+
+      .ghost-btn {
+        background: rgba(255, 255, 255, 0.04);
+        color: #ffd7e5;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .btn:hover,
+      .ghost-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn:hover {
+        box-shadow: 0 0 26px rgba(255, 84, 125, 0.28), 0 0 42px rgba(255, 43, 214, 0.16);
+      }
+
+      .ghost-btn:hover {
+        border-color: rgba(255, 84, 125, 0.42);
+      }
+
+      .status-line {
+        margin-top: 18px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .status-chip {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(255, 84, 125, 0.14);
+        color: #ff9fc4;
+        font-weight: 700;
+        font-size: 0.86rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .stat-card {
+        border-radius: 20px;
+        padding: 18px;
+      }
+
+      .stat-card span {
+        display: block;
+        font-size: 0.88rem;
+        color: rgba(255, 219, 231, 0.72);
+        letter-spacing: 1px;
+      }
+
+      .stat-card strong {
+        display: block;
+        margin-top: 8px;
+        font-size: 2rem;
+        color: #ffd9e6;
+      }
+
+      .battle-core {
+        position: relative;
+        min-height: 440px;
+        display: grid;
+        place-items: center;
+      }
+
+      .core-shell {
+        position: relative;
+        width: min(360px, 78vw);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+      }
+
+      .core-ring,
+      .core-ring::before,
+      .core-ring::after,
+      .beam,
+      .beam::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+      }
+
+      .core-ring {
+        border: 1px solid rgba(255, 84, 125, 0.24);
+        animation: spin 18s linear infinite;
+      }
+
+      .core-ring::before {
+        inset: -6px;
+        border-top: 5px solid rgba(255, 84, 125, 0.85);
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid transparent;
+      }
+
+      .core-ring.ring-2 {
+        inset: 12%;
+        border-color: rgba(255, 43, 214, 0.22);
+        animation-duration: 13s;
+        animation-direction: reverse;
+      }
+
+      .core-ring.ring-3 {
+        inset: 23%;
+        border-color: rgba(169, 111, 255, 0.24);
+        animation-duration: 8s;
+      }
+
+      .beam {
+        border-radius: 18px;
+        inset: 12% 48%;
+        transform-origin: center center;
+        background: linear-gradient(180deg, transparent, rgba(255, 84, 125, 0.45), transparent);
+        filter: blur(2px);
+      }
+
+      .beam::before {
+        inset: 0;
+        background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.44), transparent);
+      }
+
+      .beam.beam-1 {
+        transform: rotate(26deg);
+        animation: beamPulse 2.8s ease-in-out infinite;
+      }
+
+      .beam.beam-2 {
+        transform: rotate(88deg);
+        animation: beamPulse 3.2s ease-in-out infinite reverse;
+      }
+
+      .beam.beam-3 {
+        transform: rotate(146deg);
+        animation: beamPulse 2.4s ease-in-out infinite;
+      }
+
+      .core-card {
+        position: relative;
+        z-index: 1;
+        width: 66%;
+        padding: 28px 22px;
+        border-radius: 28px;
+        text-align: center;
+      }
+
+      .core-card small {
+        display: block;
+        color: #ff9fc4;
+        letter-spacing: 3px;
+      }
+
+      .core-card strong {
+        display: block;
+        margin-top: 14px;
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        color: #ffd9e6;
+        text-shadow: 0 0 18px rgba(255, 84, 125, 0.32);
+      }
+
+      .core-card em {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 224, 236, 0.76);
+        font-style: normal;
+        line-height: 1.8;
+      }
+
+      .section-panel {
+        margin-top: 24px;
+        border-radius: 28px;
+        padding: 30px;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+        text-shadow: 0 0 16px rgba(255, 84, 125, 0.22);
+      }
+
+      .section-title .accent-mini {
+        color: #ff97bc;
+      }
+
+      .signal-grid,
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .signal-card,
+      .mission-card {
+        border-radius: 22px;
+        padding: 20px;
+      }
+
+      .signal-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .signal-card::after {
+        content: '';
+        position: absolute;
+        inset: auto -30% -30% auto;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 84, 125, 0.18), transparent 70%);
+        pointer-events: none;
+      }
+
+      .signal-card h3,
+      .mission-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+      }
+
+      .signal-card p,
+      .mission-card p,
+      .mission-card li {
+        margin: 0;
+        color: rgba(255, 231, 244, 0.76);
+      }
+
+      .mission-card {
+        background: linear-gradient(180deg, rgba(36, 10, 38, 0.86), rgba(16, 6, 24, 0.88));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .mission-card ul {
+        margin: 14px 0 0;
+        padding-left: 18px;
+      }
+
+      .footer-note {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .slash {
+        position: fixed;
+        width: 120px;
+        height: 4px;
+        pointer-events: none;
+        z-index: 4;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 133, 170, 0.95), rgba(255, 255, 255, 0));
+        box-shadow: 0 0 12px rgba(255, 84, 125, 0.5);
+        animation: slashFly 0.82s ease-out forwards;
+      }
+
+      body.overdrive .hero-panel,
+      body.overdrive .section-panel,
+      body.overdrive .site-nav {
+        box-shadow: 0 0 38px rgba(255, 84, 125, 0.18), 0 0 24px rgba(255, 43, 214, 0.12), inset 0 0 24px rgba(255, 84, 125, 0.05);
+        border-color: rgba(255, 84, 125, 0.36);
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes beamPulse {
+        0%,
+        100% {
+          opacity: 0.4;
+          transform: scaleY(0.9) rotate(var(--beam-rotate, 0deg));
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1.05) rotate(var(--beam-rotate, 0deg));
+        }
+      }
+
+      @keyframes scanDrop {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(100%);
+        }
+      }
+
+      @keyframes slashFly {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) rotate(var(--angle));
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) rotate(var(--angle)) scaleX(0.4);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-layout,
+        .signal-grid,
+        .mission-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-panel,
+        .section-panel {
+          padding: 24px 20px;
+        }
+
+        .battle-core {
+          min-height: 360px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-shell {
+          width: min(100% - 18px, 1240px);
+        }
+
+        .site-nav {
+          border-radius: 26px;
+        }
+
+        .site-nav a,
+        .btn,
+        .ghost-btn {
+          width: 100%;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class='page-shell' id='pageShell'>
+      <nav class='site-nav' aria-label='站点导航'>
+        <a href='index.html'>✨ 返回首页</a>
+        <a href='battle.html' class='active'>⚔️ 战斗场</a>
+        <a href='victory.html'>🏆 凯旋站</a>
+        <a href='energy.html'>⚡ 能量舱</a>
+      </nav>
+
+      <section class='hero-panel'>
+        <div class='hero-layout'>
+          <div>
+            <div class='eyebrow'>⚠️ 出征前夜 · 战斗频道全开</div>
+            <h1>鑫哥，<span class='accent'>这一战就该一路横推！</span></h1>
+            <div class='subtitle'>考场如战场 · 但你稳操胜券</div>
+            <p class='hero-message'>
+              今晚不是紧张，而是整装待发；明天不是碰运气，而是把积累已久的实力狠狠干出来。愿鑫哥带着沉稳的脑子、火热的手感和必胜的节奏走进考场，题目来一题破一题，状态上来就一路横推，专升本这一关直接漂亮拿下！
+            </p>
+            <div class='battle-quote' id='battleQuote'>「战意拉满的那一刻，胜局就已经开始向你倾斜。」</div>
+
+            <div class='hero-actions'>
+              <button class='btn' id='battleBtn' type='button'>🔥 激活必胜战意</button>
+              <a class='ghost-btn' href='victory.html'>🏆 先看看凯旋终章</a>
+            </div>
+
+            <div class='status-line' id='battleStatus'>
+              <span class='status-chip'>当前频道</span>
+              <span>战术部署完成：思路稳定、节奏在线、上岸胜率持续飙升。</span>
+            </div>
+
+            <div class='stats-grid'>
+              <div class='stat-card'>
+                <span>战力值</span>
+                <strong id='powerNumber'>988</strong>
+              </div>
+              <div class='stat-card'>
+                <span>破关进度</span>
+                <strong id='progressNumber'>76%</strong>
+              </div>
+              <div class='stat-card'>
+                <span>心态稳定度</span>
+                <strong id='focusNumber'>92%</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class='battle-core' aria-hidden='true'>
+            <div class='core-shell'>
+              <div class='core-ring ring-1'></div>
+              <div class='core-ring ring-2'></div>
+              <div class='core-ring ring-3'></div>
+              <div class='beam beam-1'></div>
+              <div class='beam beam-2'></div>
+              <div class='beam beam-3'></div>
+              <div class='core-card'>
+                <small>Battle Power</small>
+                <strong id='corePower'>988</strong>
+                <em id='battleMode'>稳进模式已上线：落笔有章法，答题有锋芒。</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class='section-panel'>
+        <h2 class='section-title'>热血战术分镜 <span class='accent-mini'>/ 每一步都奔着上岸去</span></h2>
+        <p class='section-desc'>
+          这不是盲冲，而是带着准备和把握出征。把每一道题都当作可被拿下的关卡，把每一分钟都变成向上岸推进的战果。愿鑫哥在考场上稳中带狠，准中带快，最终打出属于自己的漂亮通关局。
+        </p>
+        <div class='signal-grid'>
+          <article class='signal-card'>
+            <h3>⚔️ 出征前夜</h3>
+            <p>现在的你不是临阵慌张，而是把状态收拢到锋刃之上。该会的已经在脑海列阵，明天只等一声开考就直接冲锋。</p>
+          </article>
+          <article class='signal-card'>
+            <h3>🚀 破关节奏</h3>
+            <p>会的题稳吃分，难的题不乱阵脚，答题节奏越写越顺。考场不是压力源，而是鑫哥展示实力的主舞台。</p>
+          </article>
+          <article class='signal-card'>
+            <h3>🏁 横推终局</h3>
+            <p>从进场那一刻开始，所有积累都会化成结果。愿你一路清醒、一路高光、一路把专升本通关结算成上岸捷报。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class='section-panel'>
+        <h2 class='section-title'>作战指令板 <span class='accent-mini'>/ 必胜信号持续锁定</span></h2>
+        <div class='mission-grid'>
+          <article class='mission-card'>
+            <h3>🎯 目标确认</h3>
+            <p>目标很明确：鑫哥专升本考试顺利，逢考必过，成功上岸。</p>
+            <ul>
+              <li>提笔清醒，审题迅速，判断果断。</li>
+              <li>会做的全拿下，难题也能稳住阵脚。</li>
+              <li>整场考试节奏顺、心态稳、发挥亮。</li>
+            </ul>
+          </article>
+          <article class='mission-card'>
+            <h3>🛡️ 状态护盾</h3>
+            <p>你的努力不是虚的，你的准备也不是白堆的。此刻最大的任务，就是相信自己已经具备赢下这一场的实力。</p>
+            <ul>
+              <li>先稳住呼吸，再稳住思路。</li>
+              <li>遇到拦路题，换角度就能破。</li>
+              <li>每完成一题，气势都会继续抬升。</li>
+            </ul>
+          </article>
+          <article class='mission-card'>
+            <h3>📣 上岸宣言</h3>
+            <p>愿鑫哥此行不是勉强通关，而是高燃拿下。考完回头看，这场仗会成为你通往更大舞台的起跑枪声。</p>
+            <ul>
+              <li>逢考必过，手感火热。</li>
+              <li>稳定发挥，分数漂亮。</li>
+              <li>成功上岸，未来开阔。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class='footer-note'>
+          <strong>战斗寄语：</strong>
+          愿明天的鑫哥像一位冷静又强势的主角，进场带风，做题带劲，收卷带笑。专升本这一战，注定不是苦撑，而是用实力狠狠干出一个漂亮结果。
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const battleQuote = document.getElementById('battleQuote');
+      const battleBtn = document.getElementById('battleBtn');
+      const battleStatus = document.getElementById('battleStatus');
+      const powerNumber = document.getElementById('powerNumber');
+      const progressNumber = document.getElementById('progressNumber');
+      const focusNumber = document.getElementById('focusNumber');
+      const corePower = document.getElementById('corePower');
+      const battleMode = document.getElementById('battleMode');
+
+      const battleQuotes = [
+        '「战意拉满的那一刻，胜局就已经开始向你倾斜。」',
+        '「明天的考场不是难关，而是你破关结算的现场。」',
+        '「你不是去碰碰运气，而是去兑现准备已久的实力。」',
+        '「稳住第一题，后面的高光就会一路跟上。」'
+      ];
+
+      let quoteIndex = 0;
+      let battleActivated = false;
+
+      setInterval(function () {
+        battleQuote.classList.add('fade');
+        setTimeout(function () {
+          quoteIndex = (quoteIndex + 1) % battleQuotes.length;
+          battleQuote.textContent = battleQuotes[quoteIndex];
+          battleQuote.classList.remove('fade');
+        }, 200);
+      }, 2800);
+
+      function animateValue(element, start, end, suffix, duration) {
+        const difference = end - start;
+        const startedAt = Date.now();
+
+        function step() {
+          const progress = Math.min((Date.now() - startedAt) / duration, 1);
+          const current = Math.round(start + difference * progress);
+          element.textContent = current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        step();
+      }
+
+      function emitSlashBurst() {
+        for (let i = 0; i < 10; i++) {
+          const slash = document.createElement('span');
+          slash.className = 'slash';
+          slash.style.left = Math.random() * window.innerWidth + 'px';
+          slash.style.top = Math.random() * window.innerHeight * 0.7 + 80 + 'px';
+          slash.style.setProperty('--tx', Math.random() * 180 - 90 + 'px');
+          slash.style.setProperty('--ty', Math.random() * -120 + 30 + 'px');
+          slash.style.setProperty('--angle', Math.random() * 140 - 70 + 'deg');
+          document.body.appendChild(slash);
+          setTimeout(function () {
+            slash.remove();
+          }, 820);
+        }
+      }
+
+      battleBtn.addEventListener('click', function () {
+        if (battleActivated) {
+          battleStatus.innerHTML = '<span class=\'status-chip\'>战意已满</span><span>鑫哥当前状态：稳、准、狠三线拉满，考场继续横推。</span>';
+          emitSlashBurst();
+          return;
+        }
+
+        battleActivated = true;
+        document.body.classList.add('overdrive');
+        animateValue(powerNumber, 988, 1588, '', 880);
+        animateValue(corePower, 988, 1588, '', 880);
+        animateValue(progressNumber, 76, 100, '%', 900);
+        animateValue(focusNumber, 92, 100, '%', 900);
+        battleMode.textContent = '必胜模式启动：题感拉满，战线推进，结局锁定上岸。';
+        battleBtn.textContent = '⚡ 必胜战意已激活';
+        battleStatus.innerHTML = '<span class=\'status-chip\'>战意爆表</span><span>出征 Buff 已叠满：逢考必过、节奏稳定、火力全开、成功上岸。</span>';
+        battleQuote.textContent = '「此刻起，鑫哥的每一次落笔，都是向上岸结局推进的一击。」';
+        emitSlashBurst();
+      });
+    </script>
+  </body>
+</html>
