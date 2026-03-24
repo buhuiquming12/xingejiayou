@@ -605,6 +605,80 @@
         animation: sparkFly 900ms ease-out forwards;
       }
 
+      body.light-mode #starfield {
+        opacity: 0.42;
+      }
+
+      body.light-mode .ambient-glow,
+      body.light-mode .ambient-glow::before,
+      body.light-mode .ambient-glow::after {
+        filter: blur(6px);
+        opacity: 0.45;
+      }
+
+      body.light-mode .hero-panel,
+      body.light-mode .section-panel,
+      body.light-mode .portal-card,
+      body.light-mode .energy-label,
+      body.light-mode .footer-note,
+      body.light-mode .blessing-card {
+        backdrop-filter: none;
+        box-shadow: 0 0 14px rgba(72, 245, 255, 0.1),
+          inset 0 0 10px rgba(72, 245, 255, 0.03);
+      }
+
+      body.light-mode .hero-panel::before,
+      body.light-mode .section-panel::before {
+        opacity: 0.65;
+      }
+
+      body.light-mode .hero-title {
+        animation: none;
+        text-shadow: 0 0 8px rgba(72, 245, 255, 0.8),
+          0 0 18px rgba(72, 245, 255, 0.48), 0 0 32px rgba(75, 123, 255, 0.22);
+      }
+
+      body.light-mode .hero-title .accent {
+        text-shadow: 0 0 10px rgba(255, 216, 107, 0.72),
+          0 0 18px rgba(255, 216, 107, 0.26);
+      }
+
+      body.light-mode .hero-subtitle,
+      body.light-mode .quote-switcher,
+      body.light-mode .hero-topline {
+        text-shadow: 0 0 8px rgba(72, 245, 255, 0.18);
+      }
+
+      body.light-mode .energy-core::before {
+        filter: none;
+        animation: none;
+        opacity: 0.72;
+      }
+
+      body.light-mode .energy-core::after {
+        box-shadow: 0 0 16px rgba(255, 216, 107, 0.2);
+      }
+
+      body.light-mode .ring,
+      body.light-mode .ring::before {
+        animation: none;
+        opacity: 0.82;
+      }
+
+      body.light-mode .buffed .hero-panel {
+        box-shadow: 0 0 20px rgba(255, 216, 107, 0.14),
+          inset 0 0 16px rgba(255, 216, 107, 0.04);
+      }
+
+      body.light-mode .buffed .hero-title {
+        text-shadow: 0 0 10px rgba(255, 216, 107, 0.78),
+          0 0 22px rgba(255, 95, 210, 0.24);
+      }
+
+      body.light-mode .spark {
+        box-shadow: 0 0 6px rgba(255, 216, 107, 0.38);
+      }
+
       @keyframes neonPulse {
         0% {
           text-shadow: 0 0 8px rgba(72, 245, 255, 0.88),
@@ -848,10 +922,22 @@
       const buffStatus = document.getElementById("buff-status");
       const pageShell = document.getElementById("page-shell");
       const buffBtn = document.getElementById("buff-btn");
+      const lightModeQuery =
+        typeof window.matchMedia === "function"
+          ? window.matchMedia(
+              "(max-width: 820px), (pointer: coarse), (hover: none), (prefers-reduced-motion: reduce)"
+            )
+          : null;
 
       let width = 0;
       let height = 0;
       let stars = [];
+      let isLightMode = false;
+      let starfieldFrameId = 0;
+      let lastStarfieldTime = 0;
+      let quoteTimer = 0;
+      let quoteFadeTimer = 0;
+      let quoteIndex = 0;
 
       const quotes = [
         "「今日蓄力到顶，明日一笔封神。」",
@@ -860,25 +946,48 @@
         "「这一战，不是试试看，而是稳稳上岸。」",
       ];
 
+      function syncLightMode() {
+        const nextLightMode = Boolean(lightModeQuery && lightModeQuery.matches);
+        const modeChanged = nextLightMode !== isLightMode;
+        isLightMode = nextLightMode;
+        document.body.classList.toggle("light-mode", isLightMode);
+        document.body.dataset.performanceMode = isLightMode ? "light" : "full";
+
+        if (modeChanged && width && height) {
+          initStarfield();
+          if (!document.hidden) {
+            stopStarfield();
+            startStarfield();
+            startQuoteRotation();
+          }
+        }
+      }
+
       function initStarfield() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         stars = [];
 
-        const starCount = Math.max(160, Math.floor((width * height) / 9000));
+        const starCount = isLightMode
+          ? Math.max(48, Math.floor((width * height) / 24000))
+          : Math.max(160, Math.floor((width * height) / 9000));
+        const maxRadius = isLightMode ? 1.2 : 1.8;
+        const maxSpeedY = isLightMode ? 0.22 : 0.38;
+        const maxSpeedX = isLightMode ? 0.08 : 0.15;
+
         for (let i = 0; i < starCount; i++) {
           stars.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            radius: Math.random() * 1.8 + 0.2,
-            speedY: Math.random() * 0.38 + 0.08,
-            speedX: (Math.random() - 0.5) * 0.15,
-            alpha: Math.random() * 0.6 + 0.2,
+            radius: Math.random() * maxRadius + 0.2,
+            speedY: Math.random() * maxSpeedY + 0.04,
+            speedX: (Math.random() - 0.5) * maxSpeedX,
+            alpha: Math.random() * 0.55 + 0.18,
           });
         }
       }
 
-      function drawStarfield() {
+      function renderStarfield(deltaMultiplier) {
         ctx.clearRect(0, 0, width, height);
 
         for (let i = 0; i < stars.length; i++) {
@@ -888,8 +997,8 @@
           ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           ctx.fill();
 
-          star.y -= star.speedY;
-          star.x += star.speedX;
+          star.y -= star.speedY * deltaMultiplier;
+          star.x += star.speedX * deltaMultiplier;
 
           if (star.y < -4) {
             star.y = height + 4;
@@ -902,45 +1011,120 @@
             star.x = -4;
           }
         }
-
-        requestAnimationFrame(drawStarfield);
       }
 
-      function rotateQuotes() {
-        let quoteIndex = 0;
-        setInterval(function () {
+      function tickStarfield(timestamp) {
+        const frameDelay = isLightMode ? 80 : 0;
+
+        if (!lastStarfieldTime) {
+          lastStarfieldTime = timestamp;
+        }
+
+        const elapsed = timestamp - lastStarfieldTime;
+        if (frameDelay && elapsed < frameDelay) {
+          starfieldFrameId = requestAnimationFrame(tickStarfield);
+          return;
+        }
+
+        const deltaMultiplier = frameDelay
+          ? Math.min(Math.max(elapsed, frameDelay) / 16.67, 4)
+          : 1;
+        lastStarfieldTime = timestamp;
+        renderStarfield(deltaMultiplier);
+        starfieldFrameId = requestAnimationFrame(tickStarfield);
+      }
+
+      function startStarfield() {
+        if (document.hidden || starfieldFrameId) {
+          return;
+        }
+
+        lastStarfieldTime = 0;
+        starfieldFrameId = requestAnimationFrame(tickStarfield);
+      }
+
+      function stopStarfield() {
+        if (!starfieldFrameId) {
+          return;
+        }
+
+        cancelAnimationFrame(starfieldFrameId);
+        starfieldFrameId = 0;
+      }
+
+      function queueNextQuote() {
+        clearTimeout(quoteTimer);
+        clearTimeout(quoteFadeTimer);
+
+        if (document.hidden) {
+          return;
+        }
+
+        const interval = isLightMode ? 4200 : 2600;
+        const fadeDelay = isLightMode ? 160 : 220;
+        quoteTimer = window.setTimeout(function () {
           quoteSwitcher.classList.add("fade");
 
-          setTimeout(function () {
+          quoteFadeTimer = window.setTimeout(function () {
             quoteIndex = (quoteIndex + 1) % quotes.length;
             quoteSwitcher.textContent = quotes[quoteIndex];
             quoteSwitcher.classList.remove("fade");
-          }, 220);
-        }, 2600);
+            queueNextQuote();
+          }, fadeDelay);
+        }, interval);
+      }
+
+      function startQuoteRotation() {
+        queueNextQuote();
+      }
+
+      function stopQuoteRotation() {
+        clearTimeout(quoteTimer);
+        clearTimeout(quoteFadeTimer);
+      }
+
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopStarfield();
+          stopQuoteRotation();
+          return;
+        }
+
+        startStarfield();
+        startQuoteRotation();
       }
 
       function emitSparks() {
         const rect = buffBtn.getBoundingClientRect();
         const originX = rect.left + rect.width / 2;
         const originY = rect.top + rect.height / 2;
+        const sparkCount = isLightMode ? 6 : 14;
+        const spreadX = isLightMode ? 120 : 180;
+        const spreadY = isLightMode ? 110 : 160;
+        const lifetime = isLightMode ? 720 : 900;
 
-        for (let i = 0; i < 14; i++) {
+        for (let i = 0; i < sparkCount; i++) {
           const spark = document.createElement("span");
           spark.className = "spark";
           spark.style.left = originX + "px";
           spark.style.top = originY + "px";
-          spark.style.setProperty("--tx", Math.random() * 180 - 90 + "px");
-          spark.style.setProperty("--ty", Math.random() * -160 - 20 + "px");
+          spark.style.setProperty(
+            "--tx",
+            Math.random() * spreadX - spreadX / 2 + "px"
+          );
+          spark.style.setProperty("--ty", Math.random() * -spreadY - 20 + "px");
           document.body.appendChild(spark);
 
           setTimeout(function () {
             spark.remove();
-          }, 900);
+          }, lifetime);
         }
       }
 
       function addBuff() {
-        pageShell.classList.add("shake");
+        if (!isLightMode) {
+          pageShell.classList.add("shake");
+        }
         document.body.classList.add("buffed");
         emitSparks();
 
@@ -951,15 +1135,28 @@
         quoteSwitcher.textContent =
           "「此刻开始，鑫哥状态全开，考场就是你的高光舞台！」";
 
-        setTimeout(function () {
-          pageShell.classList.remove("shake");
-        }, 550);
+        if (!isLightMode) {
+          setTimeout(function () {
+            pageShell.classList.remove("shake");
+          }, 550);
+        }
       }
 
-      window.addEventListener("resize", initStarfield);
+      if (lightModeQuery) {
+        if (typeof lightModeQuery.addEventListener === "function") {
+          lightModeQuery.addEventListener("change", syncLightMode);
+        } else if (typeof lightModeQuery.addListener === "function") {
+          lightModeQuery.addListener(syncLightMode);
+        }
+      }
+
+      window.addEventListener("resize", function () {
+        initStarfield();
+      });
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      syncLightMode();
       initStarfield();
-      drawStarfield();
-      rotateQuotes();
+      handleVisibilityChange();
     </script>
   </body>
 </html>

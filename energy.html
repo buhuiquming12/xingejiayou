@@ -33,10 +33,21 @@
         overflow-x: hidden;
         font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
         color: var(--white);
-        background:
-          radial-gradient(circle at top, rgba(97, 246, 255, 0.16), transparent 28%),
-          radial-gradient(circle at 82% 18%, rgba(72, 166, 255, 0.14), transparent 22%),
-          radial-gradient(circle at 18% 80%, rgba(132, 255, 133, 0.12), transparent 22%),
+        background: radial-gradient(
+            circle at top,
+            rgba(97, 246, 255, 0.16),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 82% 18%,
+            rgba(72, 166, 255, 0.14),
+            transparent 22%
+          ),
+          radial-gradient(
+            circle at 18% 80%,
+            rgba(132, 255, 133, 0.12),
+            transparent 22%
+          ),
           linear-gradient(180deg, #02070a 0%, #03121a 48%, #01060a 100%);
         position: relative;
       }
@@ -51,8 +62,7 @@
       }
 
       body::before {
-        background:
-          repeating-linear-gradient(
+        background: repeating-linear-gradient(
             90deg,
             rgba(97, 246, 255, 0.05) 0 2px,
             transparent 2px 96px
@@ -66,7 +76,12 @@
       }
 
       body::after {
-        background: linear-gradient(90deg, transparent, rgba(97, 246, 255, 0.08), transparent);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(97, 246, 255, 0.08),
+          transparent
+        );
         transform: translateX(-110%);
         animation: pulseScan 4.8s linear infinite;
       }
@@ -85,7 +100,11 @@
       .charge-card,
       .system-card,
       .core-panel {
-        background: linear-gradient(180deg, rgba(8, 24, 30, 0.86), rgba(6, 15, 23, 0.86));
+        background: linear-gradient(
+          180deg,
+          rgba(8, 24, 30, 0.86),
+          rgba(6, 15, 23, 0.86)
+        );
         border: 1px solid var(--border);
         box-shadow: var(--shadow), inset 0 0 20px rgba(97, 246, 255, 0.05);
         backdrop-filter: blur(12px);
@@ -113,7 +132,8 @@
         background: rgba(255, 255, 255, 0.04);
         font-weight: 700;
         letter-spacing: 0.8px;
-        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        transition: transform 0.28s ease, box-shadow 0.28s ease,
+          border-color 0.28s ease;
       }
 
       .site-nav a:hover,
@@ -125,7 +145,11 @@
 
       .site-nav a.active {
         color: var(--white);
-        background: linear-gradient(135deg, rgba(97, 246, 255, 0.18), rgba(72, 166, 255, 0.18));
+        background: linear-gradient(
+          135deg,
+          rgba(97, 246, 255, 0.18),
+          rgba(72, 166, 255, 0.18)
+        );
       }
 
       .hero-panel {
@@ -139,7 +163,13 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(120deg, rgba(97, 246, 255, 0.1), transparent 34%, rgba(132, 255, 133, 0.08) 72%, transparent);
+        background: linear-gradient(
+          120deg,
+          rgba(97, 246, 255, 0.1),
+          transparent 34%,
+          rgba(132, 255, 133, 0.08) 72%,
+          transparent
+        );
         pointer-events: none;
       }
 
@@ -169,7 +199,8 @@
         font-size: clamp(2.9rem, 7vw, 5.4rem);
         line-height: 1.04;
         letter-spacing: 2px;
-        text-shadow: 0 0 12px rgba(97, 246, 255, 0.9), 0 0 30px rgba(72, 166, 255, 0.48), 0 0 68px rgba(132, 255, 133, 0.18);
+        text-shadow: 0 0 12px rgba(97, 246, 255, 0.9),
+          0 0 30px rgba(72, 166, 255, 0.48), 0 0 68px rgba(132, 255, 133, 0.18);
       }
 
       h1 .accent {
@@ -236,11 +267,16 @@
         font-size: 1rem;
         font-weight: 700;
         letter-spacing: 0.8px;
-        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        transition: transform 0.28s ease, box-shadow 0.28s ease,
+          border-color 0.28s ease;
       }
 
       .btn {
-        background: linear-gradient(135deg, rgba(97, 246, 255, 0.24), rgba(72, 166, 255, 0.22));
+        background: linear-gradient(
+          135deg,
+          rgba(97, 246, 255, 0.24),
+          rgba(72, 166, 255, 0.22)
+        );
         color: var(--white);
         border: 1px solid rgba(97, 246, 255, 0.42);
         box-shadow: 0 0 20px rgba(97, 246, 255, 0.16);
@@ -258,7 +294,8 @@
       }
 
       .btn:hover {
-        box-shadow: 0 0 28px rgba(97, 246, 255, 0.24), 0 0 46px rgba(72, 166, 255, 0.14);
+        box-shadow: 0 0 28px rgba(97, 246, 255, 0.24),
+          0 0 46px rgba(72, 166, 255, 0.14);
       }
 
       .ghost-btn:hover {
@@ -309,7 +346,11 @@
         width: 160px;
         height: 160px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(97, 246, 255, 0.18), transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(97, 246, 255, 0.18),
+          transparent 70%
+        );
         pointer-events: none;
       }
 
@@ -353,13 +394,22 @@
       }
 
       .core-panel::before {
-        background: radial-gradient(circle, rgba(97, 246, 255, 0.24), transparent 60%);
+        background: radial-gradient(
+          circle,
+          rgba(97, 246, 255, 0.24),
+          transparent 60%
+        );
         filter: blur(10px);
       }
 
       .core-panel::after {
         inset: 18%;
-        background: radial-gradient(circle, rgba(132, 255, 133, 0.9), rgba(72, 166, 255, 0.36) 48%, transparent 72%);
+        background: radial-gradient(
+          circle,
+          rgba(132, 255, 133, 0.9),
+          rgba(72, 166, 255, 0.36) 48%,
+          transparent 72%
+        );
       }
 
       .ring {
@@ -391,7 +441,12 @@
       .pulse-line {
         inset: 14% 48%;
         border-radius: 16px;
-        background: linear-gradient(180deg, transparent, rgba(97, 246, 255, 0.48), transparent);
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(97, 246, 255, 0.48),
+          transparent
+        );
         filter: blur(2px);
         transform: rotate(16deg);
         animation: pulseBeam 2.6s ease-in-out infinite;
@@ -471,7 +526,12 @@
         height: 100%;
         width: 78%;
         border-radius: inherit;
-        background: linear-gradient(90deg, rgba(97, 246, 255, 0.76), rgba(72, 166, 255, 0.82), rgba(132, 255, 133, 0.88));
+        background: linear-gradient(
+          90deg,
+          rgba(97, 246, 255, 0.76),
+          rgba(72, 166, 255, 0.82),
+          rgba(132, 255, 133, 0.88)
+        );
         box-shadow: 0 0 18px rgba(97, 246, 255, 0.3);
         transition: width 0.6s ease;
       }
@@ -507,7 +567,12 @@
         border-radius: 999px;
         pointer-events: none;
         z-index: 4;
-        background: linear-gradient(180deg, rgba(97, 246, 255, 0), rgba(97, 246, 255, 1), rgba(132, 255, 133, 0));
+        background: linear-gradient(
+          180deg,
+          rgba(97, 246, 255, 0),
+          rgba(97, 246, 255, 1),
+          rgba(132, 255, 133, 0)
+        );
         box-shadow: 0 0 14px rgba(97, 246, 255, 0.42);
         animation: sparkRush 0.9s ease-out forwards;
       }
@@ -515,8 +580,69 @@
       body.charged .hero-panel,
       body.charged .section-panel,
       body.charged .site-nav {
-        box-shadow: 0 0 40px rgba(97, 246, 255, 0.18), 0 0 20px rgba(72, 166, 255, 0.12), inset 0 0 22px rgba(97, 246, 255, 0.06);
+        box-shadow: 0 0 40px rgba(97, 246, 255, 0.18),
+          0 0 20px rgba(72, 166, 255, 0.12),
+          inset 0 0 22px rgba(97, 246, 255, 0.06);
         border-color: rgba(97, 246, 255, 0.34);
+      }
+
+      body.light-mode::before {
+        opacity: 0.36;
+      }
+
+      body.light-mode::after {
+        animation: none;
+        opacity: 0.14;
+        transform: translateX(0);
+      }
+
+      body.light-mode .site-nav,
+      body.light-mode .hero-panel,
+      body.light-mode .section-panel,
+      body.light-mode .charge-card,
+      body.light-mode .system-card,
+      body.light-mode .core-panel {
+        backdrop-filter: none;
+        box-shadow: 0 0 14px rgba(97, 246, 255, 0.1),
+          inset 0 0 10px rgba(97, 246, 255, 0.03);
+      }
+
+      body.light-mode .hero-panel::before {
+        opacity: 0.72;
+      }
+
+      body.light-mode h1 {
+        text-shadow: 0 0 8px rgba(97, 246, 255, 0.82),
+          0 0 18px rgba(72, 166, 255, 0.24), 0 0 32px rgba(132, 255, 133, 0.12);
+      }
+
+      body.light-mode .energy-quote,
+      body.light-mode .eyebrow {
+        text-shadow: 0 0 8px rgba(97, 246, 255, 0.14);
+      }
+
+      body.light-mode .core-panel::before {
+        filter: none;
+        opacity: 0.62;
+      }
+
+      body.light-mode .ring,
+      body.light-mode .ring::before,
+      body.light-mode .pulse-line {
+        animation: none;
+        filter: none;
+        opacity: 0.72;
+      }
+
+      body.light-mode .spark {
+        box-shadow: 0 0 6px rgba(97, 246, 255, 0.24);
+      }
+
+      body.light-mode.charged .hero-panel,
+      body.light-mode.charged .section-panel,
+      body.light-mode.charged .site-nav {
+        box-shadow: 0 0 18px rgba(97, 246, 255, 0.1),
+          inset 0 0 12px rgba(97, 246, 255, 0.04);
       }
 
       @keyframes spin {
@@ -556,7 +682,8 @@
         }
         100% {
           opacity: 0;
-          transform: translate(var(--tx), var(--ty)) rotate(var(--rotate)) scaleY(0.2);
+          transform: translate(var(--tx), var(--ty)) rotate(var(--rotate))
+            scaleY(0.2);
         }
       }
 
@@ -616,15 +743,21 @@
         <div class="hero-layout">
           <div>
             <div class="eyebrow">⚡ 最后冲刺 · 能量系统就绪</div>
-            <h1>鑫哥，<span class="accent">状态满格，直接进入爆发输出！</span></h1>
+            <h1>
+              鑫哥，<span class="accent">状态满格，直接进入爆发输出！</span>
+            </h1>
             <div class="subtitle">专注拉满 · 思路清晰 · 最后一程狠狠干</div>
             <p class="hero-message">
               到最后冲刺阶段，最重要的不是胡思乱想，而是把能量稳稳灌进状态里。愿鑫哥此刻头脑清醒、记忆在线、节奏稳定，提笔就顺、审题就准、落笔就有答案感。专升本这最后一段，不是苦熬，而是满能量推进，狠狠干出一个成功上岸的结果。
             </p>
-            <div class="energy-quote" id="energyQuote">「当你把注意力收回来，胜利就会开始朝你集中。」</div>
+            <div class="energy-quote" id="energyQuote">
+              「当你把注意力收回来，胜利就会开始朝你集中。」
+            </div>
 
             <div class="hero-actions">
-              <button class="btn" id="chargeBtn" type="button">⚡ 一键充满冲刺能量</button>
+              <button class="btn" id="chargeBtn" type="button">
+                ⚡ 一键充满冲刺能量
+              </button>
               <a class="ghost-btn" href="battle.html">⚔️ 去战斗场点燃气势</a>
             </div>
 
@@ -655,7 +788,9 @@
               <div class="gauge-card">
                 <small>Energy Core</small>
                 <strong id="corePercent">78%</strong>
-                <em id="energyMode">冲刺模式待升级：愿你全程专注，越写越顺。</em>
+                <em id="energyMode"
+                  >冲刺模式待升级：愿你全程专注，越写越顺。</em
+                >
               </div>
             </div>
           </div>
@@ -663,32 +798,45 @@
       </section>
 
       <section class="section-panel">
-        <h2 class="section-title">蓄力模块 <span class="accent-mini">/ 最后一段更要稳准狠</span></h2>
+        <h2 class="section-title">
+          蓄力模块 <span class="accent-mini">/ 最后一段更要稳准狠</span>
+        </h2>
         <p class="section-desc">
           冲刺阶段拼的不是慌，而是专注；比的不是乱冲，而是稳定输出。愿鑫哥在最后关头把整个人的状态提到最高档，让脑子清、思路顺、答题快，所有准备都在这一刻开始发力，所有祝福都在为“成功上岸”这四个字蓄能。
         </p>
         <div class="charge-grid">
           <article class="charge-card">
             <h3>🔋 状态回满</h3>
-            <p>睡眠、心态、节奏、专注度逐步校准，让身体和脑子一起站到最佳档位。</p>
+            <p>
+              睡眠、心态、节奏、专注度逐步校准，让身体和脑子一起站到最佳档位。
+            </p>
           </article>
           <article class="charge-card">
             <h3>🧠 思路通电</h3>
-            <p>知识点不打结，关键题有切口，遇到题目先稳住，答案就会跟着冒出来。</p>
+            <p>
+              知识点不打结，关键题有切口，遇到题目先稳住，答案就会跟着冒出来。
+            </p>
           </article>
           <article class="charge-card">
             <h3>🚄 冲刺推进</h3>
-            <p>临门一脚更要有劲。愿鑫哥把最后冲刺跑成高光冲线，把上岸结果稳稳拿下。</p>
+            <p>
+              临门一脚更要有劲。愿鑫哥把最后冲刺跑成高光冲线，把上岸结果稳稳拿下。
+            </p>
           </article>
         </div>
       </section>
 
       <section class="section-panel">
-        <h2 class="section-title">舱内系统提示 <span class="accent-mini">/ 从专注到爆发，一路顺到底</span></h2>
+        <h2 class="section-title">
+          舱内系统提示
+          <span class="accent-mini">/ 从专注到爆发，一路顺到底</span>
+        </h2>
         <div class="system-grid">
           <article class="system-card">
             <h3>🎯 专注锁定</h3>
-            <p>愿你的注意力只放在该得分的地方，把外界杂音全部关掉，把答题节奏全部拿回来。</p>
+            <p>
+              愿你的注意力只放在该得分的地方，把外界杂音全部关掉，把答题节奏全部拿回来。
+            </p>
             <ul>
               <li>先看清题，再迅速下手。</li>
               <li>会做的题稳稳兑现。</li>
@@ -697,7 +845,9 @@
           </article>
           <article class="system-card">
             <h3>📈 输出升级</h3>
-            <p>越到后面越进入状态，越写越顺，越做越稳。整场考试都像被顺风推着往前跑。</p>
+            <p>
+              越到后面越进入状态，越写越顺，越做越稳。整场考试都像被顺风推着往前跑。
+            </p>
             <ul>
               <li>思路清晰，落笔利落。</li>
               <li>记忆在线，细节不丢。</li>
@@ -706,7 +856,9 @@
           </article>
           <article class="system-card">
             <h3>🌊 上岸波形</h3>
-            <p>愿这一股冲刺能量最后汇成漂亮的结果：鑫哥专升本顺利、逢考必过、成功上岸。</p>
+            <p>
+              愿这一股冲刺能量最后汇成漂亮的结果：鑫哥专升本顺利、逢考必过、成功上岸。
+            </p>
             <ul>
               <li>状态拉满，不留遗憾。</li>
               <li>发挥漂亮，结果高亮。</li>
@@ -730,59 +882,133 @@
       const meterFill = document.getElementById("meterFill");
       const corePercent = document.getElementById("corePercent");
       const energyMode = document.getElementById("energyMode");
+      const lightModeQuery =
+        typeof window.matchMedia === "function"
+          ? window.matchMedia(
+              "(max-width: 820px), (pointer: coarse), (hover: none), (prefers-reduced-motion: reduce)"
+            )
+          : null;
 
       const energyQuotes = [
         "「当你把注意力收回来，胜利就会开始朝你集中。」",
         "「最后冲刺最怕乱，最强的状态叫稳稳输出。」",
         "「你现在要做的，不是怀疑自己，而是把能量全部点亮。」",
-        "「思路一旦通电，整张卷子都会顺起来。」"
+        "「思路一旦通电，整张卷子都会顺起来。」",
       ];
 
       let quoteIndex = 0;
       let charged = false;
+      let isLightMode = false;
+      let quoteTimer = 0;
+      let quoteFadeTimer = 0;
 
-      setInterval(function () {
-        energyQuote.classList.add("fade");
-        setTimeout(function () {
-          quoteIndex = (quoteIndex + 1) % energyQuotes.length;
-          energyQuote.textContent = energyQuotes[quoteIndex];
-          energyQuote.classList.remove("fade");
-        }, 200);
-      }, 2800);
+      function syncLightMode() {
+        const nextLightMode = Boolean(lightModeQuery && lightModeQuery.matches);
+        const modeChanged = nextLightMode !== isLightMode;
+        isLightMode = nextLightMode;
+        document.body.classList.toggle("light-mode", isLightMode);
+        document.body.dataset.performanceMode = isLightMode ? "light" : "full";
+
+        if (modeChanged && !document.hidden) {
+          startQuoteRotation();
+        }
+      }
+
+      function queueNextQuote() {
+        clearTimeout(quoteTimer);
+        clearTimeout(quoteFadeTimer);
+
+        if (document.hidden) {
+          return;
+        }
+
+        const interval = isLightMode ? 4600 : 2800;
+        const fadeDelay = isLightMode ? 160 : 200;
+        quoteTimer = window.setTimeout(function () {
+          energyQuote.classList.add("fade");
+          quoteFadeTimer = window.setTimeout(function () {
+            quoteIndex = (quoteIndex + 1) % energyQuotes.length;
+            energyQuote.textContent = energyQuotes[quoteIndex];
+            energyQuote.classList.remove("fade");
+            queueNextQuote();
+          }, fadeDelay);
+        }, interval);
+      }
+
+      function startQuoteRotation() {
+        queueNextQuote();
+      }
+
+      function stopQuoteRotation() {
+        clearTimeout(quoteTimer);
+        clearTimeout(quoteFadeTimer);
+      }
+
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopQuoteRotation();
+          return;
+        }
+
+        startQuoteRotation();
+      }
 
       function animatePercent(endValue) {
         const startValue = Number.parseInt(meterValue.textContent, 10);
         const difference = endValue - startValue;
-        const startedAt = Date.now();
-        const duration = 900;
+        const duration = isLightMode ? 560 : 900;
+        const frameStep = isLightMode ? 48 : 16;
+        const startedAt = performance.now();
+        let lastRenderedAt = startedAt - frameStep;
 
-        function step() {
-          const progress = Math.min((Date.now() - startedAt) / duration, 1);
-          const current = Math.round(startValue + difference * progress);
-          meterValue.textContent = current + "%";
-          corePercent.textContent = current + "%";
-          meterFill.style.width = current + "%";
+        meterValue.textContent = startValue + "%";
+        corePercent.textContent = startValue + "%";
+        meterFill.style.width = startValue + "%";
+
+        function step(now) {
+          const progress = Math.min((now - startedAt) / duration, 1);
+          if (progress === 1 || now - lastRenderedAt >= frameStep) {
+            const current = Math.round(startValue + difference * progress);
+            meterValue.textContent = current + "%";
+            corePercent.textContent = current + "%";
+            meterFill.style.width = current + "%";
+            lastRenderedAt = now;
+          }
+
           if (progress < 1) {
             requestAnimationFrame(step);
           }
         }
 
-        step();
+        requestAnimationFrame(step);
       }
 
       function emitSparks() {
-        for (let i = 0; i < 14; i++) {
+        const sparkCount = isLightMode ? 6 : 14;
+        const spreadX = isLightMode ? 120 : 180;
+        const liftY = isLightMode ? 120 : 180;
+        const rotateRange = isLightMode ? 80 : 120;
+        const lifetime = isLightMode ? 760 : 900;
+
+        for (let i = 0; i < sparkCount; i++) {
           const spark = document.createElement("span");
           spark.className = "spark";
           spark.style.left = Math.random() * window.innerWidth + "px";
-          spark.style.top = Math.random() * window.innerHeight * 0.76 + 40 + "px";
-          spark.style.setProperty("--tx", Math.random() * 180 - 90 + "px");
-          spark.style.setProperty("--ty", Math.random() * -180 + "px");
-          spark.style.setProperty("--rotate", Math.random() * 120 - 60 + "deg");
+          spark.style.top =
+            Math.random() * window.innerHeight * 0.76 + 40 + "px";
+          spark.style.setProperty(
+            "--tx",
+            Math.random() * spreadX - spreadX / 2 + "px"
+          );
+          spark.style.setProperty("--ty", Math.random() * -liftY + "px");
+          spark.style.setProperty(
+            "--rotate",
+            Math.random() * rotateRange - rotateRange / 2 + "deg"
+          );
           document.body.appendChild(spark);
           setTimeout(function () {
             spark.remove();
-          }, 900);
+          }, lifetime);
         }
       }
 
@@ -791,17 +1017,33 @@
         emitSparks();
 
         if (charged) {
-          energyStatus.innerHTML = '<span class="status-chip">已满功率</span><span>当前冲刺频段持续高能：专注不掉线，思路继续通电，结果继续向上岸靠近。</span>';
+          energyStatus.innerHTML =
+            '<span class="status-chip">已满功率</span><span>当前冲刺频段持续高能：专注不掉线，思路继续通电，结果继续向上岸靠近。</span>';
           return;
         }
 
         charged = true;
         animatePercent(100);
         chargeBtn.textContent = "✅ 冲刺能量已拉满";
-        energyMode.textContent = "满格模式启动：心态稳、思路顺、发挥亮，直接冲向成功上岸。";
-        energyQuote.textContent = "「从现在开始，鑫哥的状态就是高能输出，整场考试都会被你越推越顺。」";
-        energyStatus.innerHTML = '<span class="status-chip">充能完成</span><span>专注、手感、记忆、冲劲四大模块已满格，鑫哥冲刺状态正式拉满。</span>';
+        energyMode.textContent =
+          "满格模式启动：心态稳、思路顺、发挥亮，直接冲向成功上岸。";
+        energyQuote.textContent =
+          "「从现在开始，鑫哥的状态就是高能输出，整场考试都会被你越推越顺。」";
+        energyStatus.innerHTML =
+          '<span class="status-chip">充能完成</span><span>专注、手感、记忆、冲劲四大模块已满格，鑫哥冲刺状态正式拉满。</span>';
       });
+
+      if (lightModeQuery) {
+        if (typeof lightModeQuery.addEventListener === "function") {
+          lightModeQuery.addEventListener("change", syncLightMode);
+        } else if (typeof lightModeQuery.addListener === "function") {
+          lightModeQuery.addListener(syncLightMode);
+        }
+      }
+
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      syncLightMode();
+      handleVisibilityChange();
     </script>
   </body>
 </html>
