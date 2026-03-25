@@ -707,10 +707,30 @@
       @media (max-width: 640px) {
         .page-shell {
           width: min(100% - 18px, 1240px);
+          padding: 18px 0 28px;
         }
 
         .site-nav {
-          border-radius: 26px;
+          top: 10px;
+          gap: 10px;
+          padding: 10px;
+          border-radius: 24px;
+          margin-bottom: 16px;
+        }
+
+        .site-nav a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          padding: 12px 16px;
+          text-align: center;
+        }
+
+        .hero-panel,
+        .section-panel {
+          padding: 22px 18px;
+          border-radius: 24px;
         }
 
         .site-nav a,
@@ -721,6 +741,49 @@
 
         .hero-actions {
           flex-direction: column;
+          gap: 12px;
+          margin-top: 24px;
+        }
+
+        .btn,
+        .ghost-btn {
+          min-height: 52px;
+          padding: 14px 18px;
+        }
+
+        .eyebrow {
+          width: 100%;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          padding: 8px 14px;
+          font-size: 0.86rem;
+          text-align: center;
+          line-height: 1.5;
+        }
+
+        .subtitle {
+          letter-spacing: 2px;
+          line-height: 1.45;
+        }
+
+        .hero-message {
+          font-size: 0.98rem;
+          line-height: 1.82;
+        }
+
+        .status-line {
+          width: 100%;
+          padding: 12px 14px;
+        }
+
+        .core-stage {
+          min-height: 320px;
+        }
+
+        .gauge-card {
+          width: min(72%, 270px);
+          padding: 22px 18px;
         }
 
         .meter-head {

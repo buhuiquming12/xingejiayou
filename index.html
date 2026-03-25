@@ -753,7 +753,7 @@
 
         .hero-panel,
         .section-panel {
-          padding: 28px 22px;
+          padding: 24px 20px;
         }
 
         .hero-side {
@@ -763,29 +763,66 @@
 
       @media (max-width: 640px) {
         .page-shell {
-          width: min(100% - 20px, 1200px);
-          padding-top: 18px;
+          width: min(100% - 18px, 1200px);
+          padding: 18px 0 30px;
+        }
+
+        .hero-panel,
+        .section-panel {
+          padding: 22px 18px;
+          border-radius: 24px;
         }
 
         .hero-topline {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          padding: 8px 14px;
           font-size: 0.85rem;
+          text-align: center;
         }
 
         .hero-subtitle {
           letter-spacing: 2px;
+          line-height: 1.5;
+        }
+
+        .hero-message {
+          font-size: 0.98rem;
+          line-height: 1.82;
         }
 
         .hero-actions {
           flex-direction: column;
+          gap: 12px;
+          margin-top: 24px;
         }
 
         .btn,
         .ghost-btn {
           width: 100%;
+          min-height: 52px;
+          padding: 14px 18px;
+        }
+
+        .status-line {
+          width: 100%;
+          padding: 12px 14px;
+        }
+
+        .hero-side {
+          min-height: 240px;
+        }
+
+        .energy-label {
+          width: min(72%, 260px);
+          padding: 20px 18px;
         }
 
         .portal-card {
-          min-height: 205px;
+          min-height: 188px;
+          padding: 22px 20px;
         }
       }
     </style>
