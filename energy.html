@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鑫哥专升本必胜 · 能量冲刺舱</title>
+    <title>鑫哥 C1 驾照考试加油 · 能量冲刺舱</title>
     <style>
       :root {
         --bg: #041017;
@@ -110,6 +110,17 @@
         backdrop-filter: blur(12px);
       }
 
+      .site-nav,
+      .hero-panel,
+      .section-panel,
+      .charge-card,
+      .system-card,
+      .core-panel,
+      .gauge-card,
+      .energy-meter {
+        clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+      }
+
       .site-nav {
         position: sticky;
         top: 14px;
@@ -117,7 +128,7 @@
         flex-wrap: wrap;
         gap: 12px;
         padding: 14px;
-        border-radius: 999px;
+        border-radius: 0;
         margin-bottom: 18px;
         justify-content: center;
         z-index: 3;
@@ -127,7 +138,7 @@
         text-decoration: none;
         color: rgba(227, 248, 255, 0.88);
         padding: 10px 18px;
-        border-radius: 999px;
+        border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.09);
         background: rgba(255, 255, 255, 0.04);
         font-weight: 700;
@@ -155,7 +166,7 @@
       .hero-panel {
         position: relative;
         overflow: hidden;
-        border-radius: 30px;
+        border-radius: 0;
         padding: 34px;
       }
 
@@ -186,12 +197,13 @@
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        border-radius: 999px;
+        border-radius: 10px;
         margin-bottom: 18px;
         background: rgba(97, 246, 255, 0.1);
         border: 1px solid rgba(97, 246, 255, 0.24);
         color: #8df9ff;
         letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
       h1 {
@@ -260,7 +272,7 @@
         justify-content: center;
         min-height: 56px;
         padding: 14px 24px;
-        border-radius: 999px;
+        border-radius: 10px;
         text-decoration: none;
         cursor: pointer;
         border: none;
@@ -309,7 +321,7 @@
         gap: 10px;
         align-items: center;
         padding: 10px 16px;
-        border-radius: 16px;
+        border-radius: 10px;
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
@@ -332,7 +344,7 @@
 
       .charge-card,
       .system-card {
-        border-radius: 22px;
+        border-radius: 0;
         padding: 20px;
         position: relative;
         overflow: hidden;
@@ -378,7 +390,7 @@
         aspect-ratio: 1;
         display: grid;
         place-items: center;
-        border-radius: 50%;
+        border-radius: 0;
         overflow: hidden;
       }
 
@@ -468,7 +480,7 @@
         width: 68%;
         text-align: center;
         padding: 26px 20px;
-        border-radius: 28px;
+        border-radius: 0;
         background: rgba(7, 18, 24, 0.72);
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: inset 0 0 18px rgba(97, 246, 255, 0.06);
@@ -499,7 +511,7 @@
       .energy-meter {
         margin-top: 20px;
         padding: 16px 18px;
-        border-radius: 20px;
+        border-radius: 0;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
@@ -516,7 +528,7 @@
       .meter-track {
         margin-top: 12px;
         height: 14px;
-        border-radius: 999px;
+        border-radius: 0;
         overflow: hidden;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -538,7 +550,7 @@
 
       .section-panel {
         margin-top: 24px;
-        border-radius: 28px;
+        border-radius: 0;
         padding: 30px;
       }
 
@@ -555,7 +567,7 @@
       .footer-note {
         margin-top: 18px;
         padding: 18px 20px;
-        border-radius: 20px;
+        border-radius: 0;
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.035);
       }
@@ -792,6 +804,230 @@
         }
       }
     </style>
+    <style>
+      :root {
+        --bg: #e7dec7;
+        --paper: rgba(249, 246, 238, 0.95);
+        --paper-strong: rgba(255, 251, 243, 0.98);
+        --ink: #213743;
+        --muted: #5c5b52;
+        --line: rgba(38, 67, 80, 0.16);
+        --accent: #2d7f77;
+        --accent-deep: #205e58;
+        --accent-soft: rgba(45, 127, 119, 0.13);
+        --shadow: 0 22px 54px rgba(34, 63, 61, 0.14);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top right, rgba(45, 127, 119, 0.14), transparent 28%),
+          linear-gradient(180deg, #efe6d3 0%, #e4d8bf 50%, #d9ccb0 100%);
+        color: var(--ink);
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1)),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 34px,
+            rgba(33, 55, 67, 0.03) 34px 35px
+          );
+        opacity: 1;
+      }
+
+      body::after {
+        background: linear-gradient(90deg, transparent, rgba(45, 127, 119, 0.08), transparent);
+        animation: none;
+        transform: none;
+      }
+
+      .page-shell {
+        width: min(1180px, calc(100% - 34px));
+        padding: 28px 0 54px;
+      }
+
+      .site-nav,
+      .hero-panel,
+      .section-panel,
+      .charge-card,
+      .system-card,
+      .core-panel,
+      .gauge-card,
+      .energy-meter {
+        background: linear-gradient(180deg, var(--paper-strong), var(--paper));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        backdrop-filter: none;
+        clip-path: none;
+      }
+
+      .site-nav {
+        top: 16px;
+        justify-content: flex-start;
+        border-radius: 24px;
+        padding: 12px;
+        background: rgba(255, 251, 243, 0.82);
+      }
+
+      .site-nav a {
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .site-nav a:hover,
+      .site-nav a.active {
+        background: var(--accent-soft);
+        border-color: rgba(45, 127, 119, 0.18);
+        box-shadow: none;
+        color: var(--accent-deep);
+      }
+
+      .hero-panel,
+      .section-panel {
+        border-radius: 30px;
+      }
+
+      .hero-panel {
+        padding: 42px;
+      }
+
+      .hero-panel::before {
+        background:
+          linear-gradient(120deg, rgba(45, 127, 119, 0.12), transparent 42%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.66), transparent 34%);
+      }
+
+      h1,
+      .section-title,
+      .charge-card h3,
+      .system-card h3 {
+        font-family: "STZhongsong", "Georgia", serif;
+        color: #1f3642;
+        text-shadow: none;
+      }
+
+      h1 .accent {
+        color: var(--accent-deep);
+      }
+
+      .eyebrow,
+      .accent-mini,
+      .status-chip,
+      .energy-quote,
+      .footer-note strong {
+        color: var(--accent-deep);
+      }
+
+      .eyebrow {
+        background: var(--accent-soft);
+        border: 1px solid rgba(45, 127, 119, 0.18);
+        border-radius: 999px;
+      }
+
+      .subtitle,
+      .section-title {
+        color: #31515f;
+        text-shadow: none;
+      }
+
+      .hero-message,
+      .section-desc,
+      .charge-card p,
+      .system-card p,
+      .system-card li,
+      .footer-note {
+        color: var(--muted);
+      }
+
+      .btn,
+      .ghost-btn {
+        min-height: 54px;
+        border-radius: 999px;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, var(--accent), #55a09a);
+        border: 1px solid rgba(32, 94, 88, 0.14);
+        color: #f6fffd;
+        box-shadow: 0 14px 28px rgba(45, 127, 119, 0.2);
+      }
+
+      .ghost-btn {
+        background: rgba(255, 255, 255, 0.52);
+        color: var(--ink);
+        border: 1px solid rgba(33, 55, 67, 0.12);
+      }
+
+      .status-line {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(33, 55, 67, 0.08);
+        color: var(--ink);
+      }
+
+      .energy-meter {
+        border-radius: 22px;
+        background: rgba(255, 252, 246, 0.86);
+      }
+
+      .meter-fill {
+        background: linear-gradient(90deg, var(--accent), #7fc2bd);
+      }
+
+      .charge-grid,
+      .system-grid {
+        gap: 18px;
+      }
+
+      .charge-card,
+      .system-card,
+      .gauge-card {
+        border-radius: 24px;
+      }
+
+      .charge-card,
+      .system-card {
+        border-top: 4px solid rgba(45, 127, 119, 0.42);
+      }
+
+      .core-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .core-panel {
+        width: min(100%, 360px);
+        aspect-ratio: 0.95;
+        border-radius: 36px;
+        background:
+          radial-gradient(circle at center, rgba(255, 255, 255, 0.18), transparent 38%),
+          linear-gradient(145deg, #2a4752, #17232a);
+        box-shadow: 0 28px 60px rgba(23, 35, 42, 0.22);
+      }
+
+      .gauge-card {
+        background: rgba(255, 252, 244, 0.94);
+      }
+
+      .ring {
+        border-style: dashed;
+      }
+
+      .pulse-line {
+        background: linear-gradient(180deg, rgba(187, 240, 236, 0.7), transparent);
+      }
+
+      .footer-note {
+        background: rgba(255, 251, 244, 0.7);
+        border: 1px dashed rgba(45, 127, 119, 0.24);
+      }
+
+      body.charged .hero-panel {
+        box-shadow: 0 28px 68px rgba(45, 127, 119, 0.18);
+      }
+    </style>
   </head>
   <body>
     <main class="page-shell">
@@ -807,11 +1043,11 @@
           <div>
             <div class="eyebrow">⚡ 最后冲刺 · 能量系统就绪</div>
             <h1>
-              鑫哥，<span class="accent">状态满格，直接进入爆发输出！</span>
+              鑫哥，<span class="accent">状态满格，直接冲向 C1 通过！</span>
             </h1>
-            <div class="subtitle">专注拉满 · 思路清晰 · 最后一程狠狠干</div>
+            <div class="subtitle">专注拉满 · 思路清晰 · 最后一程稳稳过</div>
             <p class="hero-message">
-              到最后冲刺阶段，最重要的不是胡思乱想，而是把能量稳稳灌进状态里。愿鑫哥此刻头脑清醒、记忆在线、节奏稳定，提笔就顺、审题就准、落笔就有答案感。专升本这最后一段，不是苦熬，而是满能量推进，狠狠干出一个成功上岸的结果。
+              到最后冲刺阶段，最重要的不是胡思乱想，而是把能量稳稳灌进状态里。愿鑫哥此刻头脑清醒、记忆在线、节奏稳定，提笔就顺、审题就准、操作就有手感。C1 驾照考试前这最后一段，不是苦熬，而是满能量推进，狠狠干出一个一把通过的结果。
             </p>
             <div class="energy-quote" id="energyQuote">
               「当你把注意力收回来，胜利就会开始朝你集中。」
@@ -865,7 +1101,7 @@
           蓄力模块 <span class="accent-mini">/ 最后一段更要稳准狠</span>
         </h2>
         <p class="section-desc">
-          冲刺阶段拼的不是慌，而是专注；比的不是乱冲，而是稳定输出。愿鑫哥在最后关头把整个人的状态提到最高档，让脑子清、思路顺、答题快，所有准备都在这一刻开始发力，所有祝福都在为“成功上岸”这四个字蓄能。
+          冲刺阶段拼的不是慌，而是专注；比的不是乱冲，而是稳定输出。愿鑫哥在最后关头把整个人的状态提到最高档，让脑子清、思路顺、答题快，所有准备都在这一刻开始发力，所有祝福都在为“C1 一把通过”这几个字蓄能。
         </p>
         <div class="charge-grid">
           <article class="charge-card">
@@ -883,7 +1119,7 @@
           <article class="charge-card">
             <h3>🚄 冲刺推进</h3>
             <p>
-              临门一脚更要有劲。愿鑫哥把最后冲刺跑成高光冲线，把上岸结果稳稳拿下。
+              临门一脚更要有劲。愿鑫哥把最后冲刺跑成高光冲线，把 C1 通过结果稳稳拿下。
             </p>
           </article>
         </div>
@@ -918,9 +1154,9 @@
             </ul>
           </article>
           <article class="system-card">
-            <h3>🌊 上岸波形</h3>
+            <h3>🌊 通过波形</h3>
             <p>
-              愿这一股冲刺能量最后汇成漂亮的结果：鑫哥专升本顺利、逢考必过、成功上岸。
+              愿这一股冲刺能量最后汇成漂亮的结果：鑫哥 C1 驾照考试顺利、稳定发挥、一把通过。
             </p>
             <ul>
               <li>状态拉满，不留遗憾。</li>
@@ -932,7 +1168,7 @@
 
         <div class="footer-note">
           <strong>冲刺寄语：</strong>
-          愿鑫哥最后这段冲刺不是疲惫硬撑，而是越冲越稳、越冲越亮。你已经走到这里了，就继续把状态提到顶，把结果狠狠干出来，让“成功上岸”成为这段努力最响亮的回答。
+          愿鑫哥最后这段冲刺不是疲惫硬撑，而是越冲越稳、越冲越亮。你已经走到这里了，就继续把状态提到顶，把结果狠狠干出来，让“顺利拿证”成为这段努力最响亮的回答。
         </div>
       </section>
     </main>
@@ -954,7 +1190,7 @@
 
       const energyQuotes = [
         "「当你把注意力收回来，胜利就会开始朝你集中。」",
-        "「最后冲刺最怕乱，最强的状态叫稳稳输出。」",
+          "「最后冲刺最怕乱，C1 最强的状态就叫稳稳输出。」",
         "「你现在要做的，不是怀疑自己，而是把能量全部点亮。」",
         "「思路一旦通电，整张卷子都会顺起来。」",
       ];
@@ -1081,7 +1317,7 @@
 
         if (charged) {
           energyStatus.innerHTML =
-            '<span class="status-chip">已满功率</span><span>当前冲刺频段持续高能：专注不掉线，思路继续通电，结果继续向上岸靠近。</span>';
+            '<span class="status-chip">已满功率</span><span>当前冲刺频段持续高能：专注不掉线，思路继续通电，结果继续向 C1 通过靠近。</span>';
           return;
         }
 
@@ -1089,7 +1325,7 @@
         animatePercent(100);
         chargeBtn.textContent = "✅ 冲刺能量已拉满";
         energyMode.textContent =
-          "满格模式启动：心态稳、思路顺、发挥亮，直接冲向成功上岸。";
+          "满格模式启动：心态稳、思路顺、发挥亮，直接冲向 C1 一把通过。";
         energyQuote.textContent =
           "「从现在开始，鑫哥的状态就是高能输出，整场考试都会被你越推越顺。」";
         energyStatus.innerHTML =

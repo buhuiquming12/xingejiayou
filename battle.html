@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鑫哥专升本必胜 · 热血战斗场</title>
+    <title>鑫哥 C1 驾照考试加油 · 热血战斗场</title>
     <style>
       :root {
         --bg: #06020d;
@@ -162,8 +162,9 @@
       .hero-panel {
         position: relative;
         overflow: hidden;
-        border-radius: 30px;
+        border-radius: 34px 18px 34px 18px;
         padding: 34px;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
       }
 
       .hero-panel::before {
@@ -193,12 +194,13 @@
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        border-radius: 999px;
+        border-radius: 10px;
         margin-bottom: 18px;
         background: rgba(255, 84, 125, 0.1);
         border: 1px solid rgba(255, 84, 125, 0.24);
         color: #ff97bc;
         letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
       h1 {
@@ -266,7 +268,7 @@
         justify-content: center;
         min-height: 56px;
         padding: 14px 24px;
-        border-radius: 999px;
+        border-radius: 12px;
         text-decoration: none;
         cursor: pointer;
         border: none;
@@ -275,6 +277,7 @@
         letter-spacing: 0.8px;
         transition: transform 0.28s ease, box-shadow 0.28s ease,
           border-color 0.28s ease;
+        clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
       }
 
       .btn {
@@ -315,7 +318,7 @@
         gap: 10px;
         align-items: center;
         padding: 10px 16px;
-        border-radius: 16px;
+        border-radius: 12px;
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
@@ -337,8 +340,14 @@
       }
 
       .stat-card {
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 18px;
+        clip-path: polygon(0 0, 100% 0, 100% 78%, 92% 100%, 0 100%);
+        background: linear-gradient(
+          180deg,
+          rgba(40, 14, 42, 0.92),
+          rgba(20, 8, 28, 0.9)
+        );
       }
 
       .stat-card span {
@@ -450,8 +459,9 @@
         z-index: 1;
         width: 66%;
         padding: 28px 22px;
-        border-radius: 28px;
+        border-radius: 18px;
         text-align: center;
+        clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
       }
 
       .core-card small {
@@ -478,7 +488,7 @@
 
       .section-panel {
         margin-top: 24px;
-        border-radius: 28px;
+        border-radius: 26px 16px 26px 16px;
         padding: 30px;
       }
 
@@ -501,13 +511,14 @@
 
       .signal-card,
       .mission-card {
-        border-radius: 22px;
+        border-radius: 16px;
         padding: 20px;
       }
 
       .signal-card {
         position: relative;
         overflow: hidden;
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 94% 100%, 0 100%);
       }
 
       .signal-card::after {
@@ -545,6 +556,7 @@
           rgba(16, 6, 24, 0.88)
         );
         border: 1px solid rgba(255, 255, 255, 0.08);
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 94% 100%, 0 100%);
       }
 
       .mission-card ul {
@@ -555,7 +567,7 @@
       .footer-note {
         margin-top: 18px;
         padding: 18px 20px;
-        border-radius: 20px;
+        border-radius: 16px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.035);
       }
@@ -788,6 +800,232 @@
         }
       }
     </style>
+    <style>
+      :root {
+        --bg: #efe1cb;
+        --paper: rgba(252, 246, 237, 0.95);
+        --paper-strong: rgba(255, 251, 245, 0.98);
+        --ink: #212932;
+        --muted: #5d534a;
+        --line: rgba(56, 44, 34, 0.16);
+        --accent: #a9402a;
+        --accent-strong: #7b2418;
+        --accent-soft: rgba(169, 64, 42, 0.12);
+        --shadow: 0 22px 54px rgba(74, 46, 24, 0.14);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top right, rgba(169, 64, 42, 0.14), transparent 28%),
+          linear-gradient(180deg, #f3e6d2 0%, #ebdac1 48%, #e2ccb0 100%);
+        color: var(--ink);
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1)),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 40px,
+            rgba(58, 41, 29, 0.03) 40px 41px
+          );
+        mix-blend-mode: normal;
+        opacity: 1;
+      }
+
+      body::after {
+        background: linear-gradient(90deg, transparent, rgba(169, 64, 42, 0.08), transparent);
+        animation: none;
+        transform: none;
+      }
+
+      .page-shell {
+        width: min(1180px, calc(100% - 34px));
+        padding: 28px 0 54px;
+      }
+
+      .site-nav,
+      .hero-panel,
+      .section-panel,
+      .stat-card,
+      .signal-card,
+      .core-card,
+      .mission-card {
+        background: linear-gradient(180deg, var(--paper-strong), var(--paper));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        backdrop-filter: none;
+        clip-path: none;
+      }
+
+      .site-nav {
+        top: 16px;
+        justify-content: flex-start;
+        border-radius: 24px;
+        padding: 12px;
+        background: rgba(255, 251, 245, 0.82);
+      }
+
+      .site-nav a {
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .site-nav a:hover,
+      .site-nav a.active {
+        border-color: rgba(169, 64, 42, 0.18);
+        box-shadow: none;
+        background: var(--accent-soft);
+        color: var(--accent-strong);
+      }
+
+      .hero-panel,
+      .section-panel {
+        border-radius: 30px;
+      }
+
+      .hero-panel {
+        padding: 42px;
+      }
+
+      .hero-panel::before {
+        background:
+          linear-gradient(120deg, rgba(169, 64, 42, 0.12), transparent 42%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.65), transparent 35%);
+      }
+
+      h1,
+      .section-title,
+      .mission-card h3,
+      .signal-card h3 {
+        font-family: "STZhongsong", "Georgia", serif;
+        color: #1c2834;
+        text-shadow: none;
+      }
+
+      h1 .accent {
+        color: var(--accent);
+      }
+
+      .eyebrow,
+      .accent-mini,
+      .status-chip {
+        color: var(--accent);
+      }
+
+      .eyebrow {
+        background: var(--accent-soft);
+        border: 1px solid rgba(169, 64, 42, 0.18);
+        border-radius: 999px;
+      }
+
+      .subtitle,
+      .section-title {
+        color: #25374a;
+        text-shadow: none;
+      }
+
+      .hero-message,
+      .section-desc,
+      .signal-card p,
+      .mission-card p,
+      .mission-card li,
+      .footer-note {
+        color: var(--muted);
+      }
+
+      .battle-quote,
+      .footer-note strong {
+        color: var(--accent);
+      }
+
+      .btn,
+      .ghost-btn {
+        min-height: 54px;
+        border-radius: 999px;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, var(--accent), #cb6146);
+        border: 1px solid rgba(123, 36, 24, 0.16);
+        color: #fff8f1;
+        box-shadow: 0 14px 28px rgba(169, 64, 42, 0.2);
+      }
+
+      .ghost-btn {
+        background: rgba(255, 255, 255, 0.52);
+        color: var(--ink);
+        border: 1px solid rgba(33, 41, 50, 0.12);
+      }
+
+      .status-line {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(33, 41, 50, 0.08);
+        color: var(--ink);
+      }
+
+      .stats-grid,
+      .signal-grid,
+      .mission-grid {
+        gap: 18px;
+      }
+
+      .stat-card,
+      .signal-card,
+      .mission-card,
+      .core-card {
+        border-radius: 24px;
+      }
+
+      .stat-card,
+      .signal-card,
+      .mission-card {
+        border-top: 4px solid rgba(169, 64, 42, 0.4);
+      }
+
+      .stat-card strong,
+      .core-card strong {
+        color: var(--accent-strong);
+      }
+
+      .battle-core {
+        display: grid;
+        place-items: center;
+      }
+
+      .core-shell {
+        width: min(100%, 360px);
+        aspect-ratio: 0.96;
+        border-radius: 34px;
+        background:
+          radial-gradient(circle at center, rgba(255, 255, 255, 0.16), transparent 40%),
+          linear-gradient(145deg, #2d3742, #1a222b);
+        box-shadow: 0 28px 60px rgba(17, 24, 31, 0.22);
+      }
+
+      .core-card {
+        background: rgba(251, 244, 235, 0.94);
+      }
+
+      .core-ring {
+        border-style: dashed;
+      }
+
+      .beam {
+        background: linear-gradient(180deg, rgba(255, 216, 186, 0.8), transparent);
+      }
+
+      .footer-note {
+        background: rgba(255, 250, 244, 0.7);
+        border: 1px dashed rgba(169, 64, 42, 0.24);
+      }
+
+      body.overdrive .hero-panel {
+        box-shadow: 0 28px 68px rgba(145, 58, 39, 0.18);
+      }
+    </style>
   </head>
   <body>
     <main class="page-shell" id="pageShell">
@@ -802,10 +1040,10 @@
         <div class="hero-layout">
           <div>
             <div class="eyebrow">⚠️ 出征前夜 · 战斗频道全开</div>
-            <h1>鑫哥，<span class="accent">这一战就该一路横推！</span></h1>
-            <div class="subtitle">考场如战场 · 但你稳操胜券</div>
+            <h1>鑫哥，<span class="accent">C1 这场就该一路稳过！</span></h1>
+            <div class="subtitle">考试如战场 · 但你稳操胜券</div>
             <p class="hero-message">
-              今晚不是紧张，而是整装待发；明天不是碰运气，而是把积累已久的实力狠狠干出来。愿鑫哥带着沉稳的脑子、火热的手感和必胜的节奏走进考场，题目来一题破一题，状态上来就一路横推，专升本这一关直接漂亮拿下！
+              今晚不是紧张，而是整装待发；明天不是碰运气，而是把积累已久的实力狠狠干出来。愿鑫哥带着沉稳的脑子、清醒的判断和必过的节奏走进考场，题目来一题稳一题，操作做一步顺一步，C1 这一关直接漂亮拿下！
             </p>
             <div class="battle-quote" id="battleQuote">
               「战意拉满的那一刻，胜局就已经开始向你倾斜。」
@@ -813,14 +1051,14 @@
 
             <div class="hero-actions">
               <button class="btn" id="battleBtn" type="button">
-                🔥 激活必胜战意
+                🔥 激活 C1 必胜战意
               </button>
               <a class="ghost-btn" href="victory.html">🏆 先看看凯旋终章</a>
             </div>
 
             <div class="status-line" id="battleStatus">
               <span class="status-chip">当前频道</span>
-              <span>战术部署完成：思路稳定、节奏在线、上岸胜率持续飙升。</span>
+              <span>战术部署完成：思路稳定、节奏在线、C1 通过率气场持续飙升。</span>
             </div>
 
             <div class="stats-grid">
@@ -861,10 +1099,10 @@
 
       <section class="section-panel">
         <h2 class="section-title">
-          热血战术分镜 <span class="accent-mini">/ 每一步都奔着上岸去</span>
+          热血战术分镜 <span class="accent-mini">/ 每一步都奔着一把通过去</span>
         </h2>
         <p class="section-desc">
-          这不是盲冲，而是带着准备和把握出征。把每一道题都当作可被拿下的关卡，把每一分钟都变成向上岸推进的战果。愿鑫哥在考场上稳中带狠，准中带快，最终打出属于自己的漂亮通关局。
+          这不是盲冲，而是带着准备和把握出征。把每一道题都当作可被拿下的关卡，把每一分钟都变成向通过推进的战果。愿鑫哥在考场上稳中带狠，准中带快，最终打出属于自己的漂亮通关局。
         </p>
         <div class="signal-grid">
           <article class="signal-card">
@@ -882,7 +1120,7 @@
           <article class="signal-card">
             <h3>🏁 横推终局</h3>
             <p>
-              从进场那一刻开始，所有积累都会化成结果。愿你一路清醒、一路高光、一路把专升本通关结算成上岸捷报。
+              从进场那一刻开始，所有积累都会化成结果。愿你一路清醒、一路高光、一路把 C1 考试结算成通过捷报。
             </p>
           </article>
         </div>
@@ -890,12 +1128,12 @@
 
       <section class="section-panel">
         <h2 class="section-title">
-          作战指令板 <span class="accent-mini">/ 必胜信号持续锁定</span>
+          作战指令板 <span class="accent-mini">/ C1 必胜信号持续锁定</span>
         </h2>
         <div class="mission-grid">
           <article class="mission-card">
             <h3>🎯 目标确认</h3>
-            <p>目标很明确：鑫哥专升本考试顺利，逢考必过，成功上岸。</p>
+            <p>目标很明确：鑫哥 C1 驾照考试顺利，稳定发挥，一把通过。</p>
             <ul>
               <li>提笔清醒，审题迅速，判断果断。</li>
               <li>会做的全拿下，难题也能稳住阵脚。</li>
@@ -914,21 +1152,21 @@
             </ul>
           </article>
           <article class="mission-card">
-            <h3>📣 上岸宣言</h3>
+            <h3>📣 拿证宣言</h3>
             <p>
-              愿鑫哥此行不是勉强通关，而是高燃拿下。考完回头看，这场仗会成为你通往更大舞台的起跑枪声。
+              愿鑫哥此行不是勉强通关，而是高燃拿下。考完回头看，这场仗会成为你顺利拿证、自在上路的起跑枪声。
             </p>
             <ul>
-              <li>逢考必过，手感火热。</li>
-              <li>稳定发挥，分数漂亮。</li>
-              <li>成功上岸，未来开阔。</li>
+              <li>C1 必过，手感火热。</li>
+              <li>稳定发挥，细节漂亮。</li>
+              <li>顺利拿证，未来开阔。</li>
             </ul>
           </article>
         </div>
 
         <div class="footer-note">
           <strong>战斗寄语：</strong>
-          愿明天的鑫哥像一位冷静又强势的主角，进场带风，做题带劲，收卷带笑。专升本这一战，注定不是苦撑，而是用实力狠狠干出一个漂亮结果。
+          愿明天的鑫哥像一位冷静又强势的主角，进场带风，答题带劲，收尾带笑。C1 这一战，注定不是苦撑，而是用实力狠狠干出一个漂亮结果。
         </div>
       </section>
     </main>
@@ -950,7 +1188,7 @@
           : null;
 
       const battleQuotes = [
-        "「战意拉满的那一刻，胜局就已经开始向你倾斜。」",
+        "「战意拉满的那一刻，C1 通过的胜局就已经开始向你倾斜。」",
         "「明天的考场不是难关，而是你破关结算的现场。」",
         "「你不是去碰碰运气，而是去兑现准备已久的实力。」",
         "「稳住第一题，后面的高光就会一路跟上。」",
@@ -1082,12 +1320,12 @@
         animateValue(progressNumber, 76, 100, "%", 900);
         animateValue(focusNumber, 92, 100, "%", 900);
         battleMode.textContent =
-          "必胜模式启动：题感拉满，战线推进，结局锁定上岸。";
-        battleBtn.textContent = "⚡ 必胜战意已激活";
+          "必胜模式启动：题感拉满，战线推进，结局锁定一把通过。";
+        battleBtn.textContent = "⚡ C1 必胜战意已激活";
         battleStatus.innerHTML =
-          "<span class='status-chip'>战意爆表</span><span>出征 Buff 已叠满：逢考必过、节奏稳定、火力全开、成功上岸。</span>";
+          "<span class='status-chip'>战意爆表</span><span>出征 Buff 已叠满：C1 必过、节奏稳定、火力全开、顺利拿证。</span>";
         battleQuote.textContent =
-          "「此刻起，鑫哥的每一次落笔，都是向上岸结局推进的一击。」";
+          "「此刻起，鑫哥的每一次落笔，都是向 C1 一把通过推进的一击。」";
         emitSlashBurst();
       });
 
